@@ -16,6 +16,12 @@ import PieChart from "./PieChart/PieChart";
 const Visualization = () => {
   const [loading, setLoading] = useState(false);
   const [recordCount, setRecordCount] = useState(0);
+  const [ageGroupCount, setAgeGroupCount] = useState([]);
+  const [maskUseCount, setMaskUseCount] = useState([]);
+  const [friendVisitingCount, setFriendVisitingCount] = useState([]);
+  const [publicCount, setPublicCount] = useState([]);
+  const [workPlanCount, setWorkPlanCount] = useState([]);
+  const [vaccinationCount, setVaccinationCount] = useState([]);
 
   useEffect(() => {
     // This useEffect will execute when ever the page refreshes so that, it can reset to original state for graph visualization
@@ -31,7 +37,12 @@ const Visualization = () => {
     setLoading(true);
     await db.collection("users").onSnapshot((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        console.log(doc.data());
+        setAgeGroupCount(ageGroupResult(doc.data().age, false));
+        setMaskUseCount(maskResult(doc.data().useOfMask, false));
+        setFriendVisitingCount(friendsResult(doc.data().friendVisiting, false));
+        setPublicCount(publicResult(doc.data().publicVisiting, false));
+        setWorkPlanCount(workPlanResult(doc.data().workPlan, false));
+        setVaccinationCount(vaccinationsResult(doc.data().vaccination, false));
         setRecordCount((recordCount) => recordCount + 1);
       });
     });
@@ -57,33 +68,33 @@ const Visualization = () => {
             <PieChart
               title="Age Group"
               labels={["< 18", "19-29", "30-39", "40-49", "50-59", "60+"]}
-              data_={[5, 2, 4, 9, 3, 6]}
+              data_={ageGroupCount}
             />
             <DoughnutChart
               title="Friend Visiting"
               labels={["Avoided", "Sometimes"]}
-              data_={[50, 23]}
+              data_={friendVisitingCount}
             />
             <PieChart
               title="Vaccination"
               labels={["Single dose", "Fully Vaccinated", "Not Vaccinated"]}
-              data_={[20, 50, 65]}
+              data_={vaccinationCount}
             />
             <DoughnutChart
               title="Use of Masks"
               labels={["Avoided", "Sometimes"]}
-              data_={[90, 23]}
+              data_={maskUseCount}
             />
             <PieChart
               title="Public Visiting"
               labels={["Avoided", "Sometimes"]}
-              data_={[12, 23]}
+              data_={publicCount}
             />
 
             <DoughnutChart
               title="Work Plan"
               labels={["WFH", "Visiting to office", "Both"]}
-              data_={[90, 23, 63]}
+              data_={workPlanCount}
             />
           </section>
         </main>

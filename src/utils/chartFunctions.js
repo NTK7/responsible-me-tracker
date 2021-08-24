@@ -16,7 +16,7 @@ export const maskResult = (data, reset) => {
   reset && (maskCount = [0, 0]);
 
   switch (data) {
-    case "avoided":
+    case "always":
       maskCount[0]++;
       break;
     case "sometimes":
@@ -84,7 +84,7 @@ export const workPlanResult = (data, reset) => {
 };
 
 export const vaccinationsResult = (data, reset) => {
-  reset && (vaccinationsCount = [0, 0]);
+  reset && (vaccinationsCount = [0, 0, 0]);
 
   switch (data) {
     case "single":
