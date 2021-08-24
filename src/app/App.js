@@ -7,7 +7,7 @@ import {
   RadioGroup,
   TextField,
 } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Processing from "../components/Processing/Processing";
 import Result from "../components/Result/Result";
@@ -24,7 +24,7 @@ const App = () => {
   const [useOfMask, setUseOfMask] = useState(null);
   const [totalWeight, setTotalWeight] = useState(null);
 
-  const [displayResult, setDisplayResult] = useState(false);
+  const [displayResult, setDisplayResult] = useState(true);
   const [processing, setProcessing] = useState(false);
 
   const onHandleSubmit = async (e) => {
@@ -50,7 +50,7 @@ const App = () => {
         friendVisiting: friendVisiting,
         useOfMask: useOfMask,
         totalWeight: totalWeight_,
-        percentage: Math.round(Math.round(totalWeight_ * 100)),
+        percentage: Math.round(totalWeight_ * 10000) / 100,
       })
       .then((res) => {
         setProcessing(false);
@@ -295,7 +295,8 @@ const App = () => {
       ) : processing ? (
         <Processing />
       ) : (
-        <Result percentage={totalWeight} age={age}/>
+        <Result percentage={0.877} age={"25"} />
+        // <Result percentage={totalWeight} age={age}/>
       )}
     </Container>
   );

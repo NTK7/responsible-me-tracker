@@ -2,25 +2,10 @@ import styled from "styled-components";
 import GaugeChart from "react-gauge-chart";
 import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
+import Visualization from "../Visualizations/Visualization";
 
 function Result({ percentage, age }) {
   const [bestResults, setBestResults] = useState(false);
-  const [ageBoundary, setAgeBoundary] = useState(25);
-
-  // if result is 100% then continue the best practices, you are good to go else
-  // for age group more than 30
-  // - Take the Vaccine
-  // - Take the second dose
-  // - Work from home as much as possible
-  // - Avoid public places for next 2 weeks
-  // - Do not visit your friends & relatives for next 2 weeks
-  // - Always wear a mask outsite home
-
-  // for age group less than 30
-  // - Work from home as much as possible
-  // - Avoid public places for next 2 weeks
-  // - Do not visit your friends & relatives for next 2 weeks
-  // - Always wear a mask outsite home
 
   useEffect(() => {
     console.log(percentage);
@@ -45,7 +30,9 @@ function Result({ percentage, age }) {
       />
       <h4>
         You are only{" "}
-        <strong style={{ color: "red" }}>{percentage * 100}%</strong>{" "}
+        <strong style={{ color: "red" }}>
+          {Math.round(percentage * 10000) / 100}%
+        </strong>{" "}
         Responsible
       </h4>
       <p>Take following actions and be 100% #Responsible citizen</p>
@@ -79,6 +66,10 @@ function Result({ percentage, age }) {
         onClick={onHandleRefreshPage}>
         Try Again
       </Button>
+
+      <main className="visualization">
+        <Visualization />
+      </main>
     </Container>
   );
 }
@@ -118,5 +109,8 @@ const Container = styled.div`
   }
   > button {
     margin: 1pc;
+  }
+  .visualization {
+    width: 100%;
   }
 `;
