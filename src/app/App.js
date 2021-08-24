@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { useState } from "react";
 import styled from "styled-components";
+import Processing from "../components/processing/Processing";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -39,6 +40,20 @@ const App = () => {
       {!displayResult ? (
         <section>
           <form onSubmit={onHandleSubmit}>
+            {/* District */}
+            <FormControl
+              color="secondary"
+              component="fieldset"
+              className="form-control">
+              <TextField
+                label="Enter your district"
+                color="secondary"
+                variant="filled"
+                value={district}
+                onChange={(e) => setDistrict(e.target.value)}
+                className="text-field"
+              />
+            </FormControl>
             {/* age group */}
             <FormControl
               color="secondary"
@@ -78,21 +93,6 @@ const App = () => {
                 />
                 <FormControlLabel value="60+" control={<Radio />} label="60+" />
               </RadioGroup>
-            </FormControl>
-
-            {/* District */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <TextField
-                label="District"
-                color="secondary"
-                variant="filled"
-                value={district}
-                onChange={(e) => setDistrict(e.target.value)}
-                className="text-field"
-              />
             </FormControl>
 
             {/* Vaccination */}
@@ -259,7 +259,7 @@ const App = () => {
           </form>
         </section>
       ) : processing ? (
-        <p>Processing the result please hold on...</p>
+        <Processing />
       ) : (
         <section>Displaying result</section>
       )}
