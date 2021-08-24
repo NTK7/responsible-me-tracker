@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Processing from "../components/Processing/Processing";
 import Result from "../components/Result/Result";
+import { db } from "../firebase";
+import { WEIGHTS } from "../utils/conversions";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -20,19 +22,45 @@ const App = () => {
   const [publicVisiting, setPublicVisiting] = useState(null);
   const [friendVisiting, setFriendVisiting] = useState(null);
   const [useOfMask, setUseOfMask] = useState(null);
+  const [totalWeight, setTotalWeight] = useState(null);
 
   const [displayResult, setDisplayResult] = useState(false);
   const [processing, setProcessing] = useState(false);
 
-  const onHandleSubmit = (e) => {
+  const onHandleSubmit = async (e) => {
     e.preventDefault();
     setDisplayResult(true);
     setProcessing(true);
-    // we do all the logic and database work here
 
-    setTimeout(() => {
-      setProcessing(false);
-    }, 2000);
+    let totalWeight_ =
+      WEIGHTS.vaccination[vaccination] +
+      WEIGHTS.workPlan[workPlan] +
+      WEIGHTS.public[publicVisiting] +
+      WEIGHTS.friends[friendVisiting] +
+      WEIGHTS.mask[useOfMask];
+    setTotalWeight(totalWeight_);
+    await db
+      .collection("users")
+      .add({
+        age: age,
+        district: district,
+        vaccination: vaccination,
+        workPlan: workPlan,
+        publicVisiting: publicVisiting,
+        friendVisiting: friendVisiting,
+        useOfMask: useOfMask,
+        totalWeight: totalWeight_,
+        percentage: Math.round(Math.round(totalWeight_ * 100)),
+      })
+      .then((res) => {
+        setProcessing(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setDisplayResult(false);
+        setProcessing(false);
+        alert("Something went wrong");
+      });
   };
   return (
     <Container className="container mt-3">
@@ -48,6 +76,7 @@ const App = () => {
               className="form-control">
               <TextField
                 label="Enter your district"
+                required={true}
                 color="secondary"
                 variant="filled"
                 value={district}
@@ -69,30 +98,34 @@ const App = () => {
                 required>
                 <FormControlLabel
                   value="0-17"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="Below 18"
                 />
                 <FormControlLabel
                   value="19-29"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="19-29"
                 />
                 <FormControlLabel
                   value="30-39"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="30-39"
                 />
                 <FormControlLabel
                   value="40-49"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="40-49"
                 />
                 <FormControlLabel
                   value="50-59"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="50-59"
                 />
-                <FormControlLabel value="60+" control={<Radio />} label="60+" />
+                <FormControlLabel
+                  value="60+"
+                  control={<Radio required={true} />}
+                  label="60+"
+                />
               </RadioGroup>
             </FormControl>
 
@@ -109,18 +142,18 @@ const App = () => {
                 onChange={(e) => setVaccination(e.target.value)}
                 required>
                 <FormControlLabel
-                  value="SingleDose"
-                  control={<Radio />}
+                  value="single"
+                  control={<Radio required={true} />}
                   label="Single Dose"
                 />
                 <FormControlLabel
-                  value="FullyVaccinated"
-                  control={<Radio />}
+                  value="fully"
+                  control={<Radio required={true} />}
                   label="Fully Vaccinated"
                 />
                 <FormControlLabel
-                  value="NotVaccinated"
-                  control={<Radio />}
+                  value="not"
+                  control={<Radio required={true} />}
                   label="Not Vaccinated"
                 />
               </RadioGroup>
@@ -141,18 +174,18 @@ const App = () => {
                 onChange={(e) => setWorkPlan(e.target.value)}
                 required>
                 <FormControlLabel
-                  value="WFT"
-                  control={<Radio />}
+                  value="wft"
+                  control={<Radio required={true} />}
                   label="Work from home"
                 />
                 <FormControlLabel
-                  value="VisitingToOffice"
-                  control={<Radio />}
+                  value="visiting"
+                  control={<Radio required={true} />}
                   label="Visiting to office"
                 />
                 <FormControlLabel
-                  value="Both"
-                  control={<Radio />}
+                  value="both"
+                  control={<Radio required={true} />}
                   label="Both"
                 />
               </RadioGroup>
@@ -173,20 +206,20 @@ const App = () => {
                 onChange={(e) => setPublicVisiting(e.target.value)}
                 required>
                 <FormControlLabel
-                  value="Avoided"
-                  control={<Radio />}
+                  value="avoided"
+                  control={<Radio required={true} />}
                   label="Avoided"
                 />
                 <FormControlLabel
-                  value="Sometimes"
-                  control={<Radio />}
+                  value="sometimes"
+                  control={<Radio required={true} />}
                   label="Sometimes"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   value="Both"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="Both"
-                />
+                /> */}
               </RadioGroup>
             </FormControl>
 
@@ -205,20 +238,20 @@ const App = () => {
                 onChange={(e) => setFriendVisiting(e.target.value)}
                 required>
                 <FormControlLabel
-                  value="Avoided"
-                  control={<Radio />}
+                  value="avoided"
+                  control={<Radio required={true} />}
                   label="Avoided"
                 />
                 <FormControlLabel
-                  value="Sometimes"
-                  control={<Radio />}
+                  value="sometimes"
+                  control={<Radio required={true} />}
                   label="Sometimes"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   value="Both"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="Both"
-                />
+                /> */}
               </RadioGroup>
             </FormControl>
 
@@ -237,20 +270,20 @@ const App = () => {
                 onChange={(e) => setUseOfMask(e.target.value)}
                 required>
                 <FormControlLabel
-                  value="Avoided"
-                  control={<Radio />}
-                  label="Avoided"
+                  value="always"
+                  control={<Radio required={true} />}
+                  label="Always"
                 />
                 <FormControlLabel
-                  value="Sometimes"
-                  control={<Radio />}
+                  value="sometimes"
+                  control={<Radio required={true} />}
                   label="Sometimes"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   value="Both"
-                  control={<Radio />}
+                  control={<Radio required={true} />}
                   label="Both"
-                />
+                /> */}
               </RadioGroup>
             </FormControl>
 
@@ -262,7 +295,7 @@ const App = () => {
       ) : processing ? (
         <Processing />
       ) : (
-        <Result />
+        <Result percentage={totalWeight} />
       )}
     </Container>
   );
@@ -278,6 +311,9 @@ const Container = styled.div`
     justify-content: center;
     color: #f21313;
     padding: 1pc;
+    text-transform: uppercase;
+    /* font-weight: bold; */
+    font-size: 1.8rem;
     margin-top: 2pc;
     background-color: #fff2f2;
   }

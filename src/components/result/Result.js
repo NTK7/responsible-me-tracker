@@ -3,7 +3,7 @@ import GaugeChart from "react-gauge-chart";
 import { useState } from "react";
 import { Button } from "@material-ui/core";
 
-function Result() {
+function Result({ percentage }) {
   const [bestResults, setBestResults] = useState(false);
   const [ageBoundary, setAgeBoundary] = useState(25);
 
@@ -36,7 +36,7 @@ function Result() {
         nrOfLevels={15}
         arcPadding={0.1}
         cornerRadius={5}
-        percent={0.62}
+        percent={percentage}
       />
       <h4>You are only 70% Responsible</h4>
       <p>Take following actions and be 100% #Responsible citizen</p>
