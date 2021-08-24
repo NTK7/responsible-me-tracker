@@ -1,18 +1,46 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ageGroupResult } from "../../utils/chartFunctions";
+import { db } from "../../firebase";
+import {
+  ageGroupResult,
+  friendsResult,
+  maskResult,
+  publicResult,
+  vaccinationsResult,
+  workPlanResult,
+} from "../../utils/chartFunctions";
 import Processing from "../Processing/Processing";
 import DoughnutChart from "./DoughnutChart/DoughnutChart";
 import PieChart from "./PieChart/PieChart";
 
 const Visualization = () => {
   const [loading, setLoading] = useState(false);
+  const [recordCount, setRecordCount] = useState(0);
 
-//   useEffect(() => {
-//     ageGroupResult("0-17", false);
-//     let result = ageGroupResult("60+", false);
-//     console.log(result);
-//   }, []);
+  useEffect(() => {
+    // This useEffect will execute when ever the page refreshes so that, it can reset to original state for graph visualization
+    ageGroupResult(null, true);
+    maskResult(null, true);
+    friendsResult(null, true);
+    publicResult(null, true);
+    workPlanResult(null, true);
+    vaccinationsResult(null, true);
+  }, []);
+
+  const fetchData = async () => {
+    setLoading(true);
+    await db.collection("users").onSnapshot((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        console.log(doc.data());
+        setRecordCount((recordCount) => recordCount + 1);
+      });
+    });
+  };
+  useEffect(() => {
+    setRecordCount(0);
+    fetchData();
+    setLoading(false);
+  }, []);
 
   return (
     <Container>
@@ -23,7 +51,7 @@ const Visualization = () => {
         <main>
           <div>
             <p>Total Submissions</p>
-            <h4>156</h4>
+            <h4>{recordCount}</h4>
           </div>
           <section>
             <PieChart
