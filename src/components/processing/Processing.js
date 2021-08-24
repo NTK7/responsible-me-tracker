@@ -4,7 +4,7 @@ const Processing = () => {
   return (
     <Container>
       <img src="/extra/loading.gif" alt="" />
-      <p>Your results are being calculated, please hold on ...</p>
+      <p>Processing the data, please hold on ...</p>
     </Container>
   );
 };

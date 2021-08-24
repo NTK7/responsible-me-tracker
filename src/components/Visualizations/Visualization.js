@@ -1,50 +1,65 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { ageGroupResult } from "../../utils/chartFunctions";
+import Processing from "../Processing/Processing";
 import DoughnutChart from "./DoughnutChart/DoughnutChart";
 import PieChart from "./PieChart/PieChart";
 
 const Visualization = () => {
+  const [loading, setLoading] = useState(false);
+
+//   useEffect(() => {
+//     ageGroupResult("0-17", false);
+//     let result = ageGroupResult("60+", false);
+//     console.log(result);
+//   }, []);
+
   return (
     <Container>
       <h1>Live Statistics</h1>
-      <main>
-        <div>
-          <p>Total Submissions</p>
-          <h4>156</h4>
-        </div>
-        <section>
-          <PieChart
-            title="Age Group"
-            labels={["< 18", "19-29", "30-39", "40-49", "50-59", "60+"]}
-            data_={[5, 2, 4, 9, 3, 6]}
-          />
-          <DoughnutChart
-            title="Friend Visiting"
-            labels={["Avoided", "Sometimes"]}
-            data_={[50, 23]}
-          />
-          <PieChart
-            title="Vaccination"
-            labels={["Single dose", "Fully Vaccinated", "Not Vaccinated"]}
-            data_={[20, 50, 65]}
-          />
-          <DoughnutChart
-            title="Use of Masks"
-            labels={["Avoided", "Sometimes"]}
-            data_={[90, 23]}
-          />
-          <PieChart
-            title="Public Visiting"
-            labels={["Avoided", "Sometimes"]}
-            data_={[12, 23]}
-          />
+      {loading ? (
+        <Processing />
+      ) : (
+        <main>
+          <div>
+            <p>Total Submissions</p>
+            <h4>156</h4>
+          </div>
+          <section>
+            <PieChart
+              title="Age Group"
+              labels={["< 18", "19-29", "30-39", "40-49", "50-59", "60+"]}
+              data_={[5, 2, 4, 9, 3, 6]}
+            />
+            <DoughnutChart
+              title="Friend Visiting"
+              labels={["Avoided", "Sometimes"]}
+              data_={[50, 23]}
+            />
+            <PieChart
+              title="Vaccination"
+              labels={["Single dose", "Fully Vaccinated", "Not Vaccinated"]}
+              data_={[20, 50, 65]}
+            />
+            <DoughnutChart
+              title="Use of Masks"
+              labels={["Avoided", "Sometimes"]}
+              data_={[90, 23]}
+            />
+            <PieChart
+              title="Public Visiting"
+              labels={["Avoided", "Sometimes"]}
+              data_={[12, 23]}
+            />
 
-          <DoughnutChart
-            title="Work Plan"
-            labels={["WFH", "Visiting to office", "Both"]}
-            data_={[90, 23, 63]}
-          />
-        </section>
-      </main>
+            <DoughnutChart
+              title="Work Plan"
+              labels={["WFH", "Visiting to office", "Both"]}
+              data_={[90, 23, 63]}
+            />
+          </section>
+        </main>
+      )}
     </Container>
   );
 };
