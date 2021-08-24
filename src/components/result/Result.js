@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import GaugeChart from "react-gauge-chart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 
-function Result({ percentage }) {
+function Result({ percentage, age }) {
   const [bestResults, setBestResults] = useState(false);
   const [ageBoundary, setAgeBoundary] = useState(25);
 
@@ -22,6 +22,11 @@ function Result({ percentage }) {
   // - Do not visit your friends & relatives for next 2 weeks
   // - Always wear a mask outsite home
 
+  useEffect(() => {
+    console.log(percentage);
+    percentage === 1 && setBestResults(true);
+  }, [percentage]);
+
   const onHandleRefreshPage = () => {
     window.scrollTo(0, 0);
     window.location.href = "/";
@@ -38,7 +43,11 @@ function Result({ percentage }) {
         cornerRadius={5}
         percent={percentage}
       />
-      <h4>You are only 70% Responsible</h4>
+      <h4>
+        You are only{" "}
+        <strong style={{ color: "red" }}>{percentage * 100}%</strong>{" "}
+        Responsible
+      </h4>
       <p>Take following actions and be 100% #Responsible citizen</p>
 
       <section>
@@ -46,7 +55,7 @@ function Result({ percentage }) {
           <div>
             <p>Please make sure you follow the below instructions below.</p>
             <ul>
-              {ageBoundary > 30 && (
+              {!age.includes("1") && (
                 <>
                   <li>Take the Vaccine</li>
                   <li>Take the second dose</li>
@@ -59,7 +68,7 @@ function Result({ percentage }) {
             </ul>
           </div>
         ) : (
-          <p>Great job, continue the best practices!</p>
+          <h3>Great job, continue the best practices!</h3>
         )}
       </section>
 

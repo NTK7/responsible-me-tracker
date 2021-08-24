@@ -295,7 +295,7 @@ const App = () => {
       ) : processing ? (
         <Processing />
       ) : (
-        <Result percentage={totalWeight} />
+        <Result percentage={totalWeight} age={age}/>
       )}
     </Container>
   );
