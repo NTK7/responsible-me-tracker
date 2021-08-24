@@ -7,9 +7,10 @@ import {
   RadioGroup,
   TextField,
 } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Processing from "../components/processing/Processing";
+import Processing from "../components/Processing/Processing";
+import Result from "../components/Result/Result";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -261,7 +262,7 @@ const App = () => {
       ) : processing ? (
         <Processing />
       ) : (
-        <section>Displaying result</section>
+        <Result />
       )}
     </Container>
   );
@@ -270,11 +271,15 @@ const App = () => {
 export default App;
 
 const Container = styled.div`
+  margin-bottom: 3pc;
   > h2 {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #f21313;
+    padding: 1pc;
+    margin-top: 2pc;
+    background-color: #fff2f2;
   }
   > section {
     padding: 3pc 1pc;
