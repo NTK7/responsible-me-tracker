@@ -383,6 +383,7 @@ const Container = styled.div`
       padding: 1pc 0;
       > p {
         font-weight: lighter;
+        font-size: small;
       }
       > form {
         width: 80vw;

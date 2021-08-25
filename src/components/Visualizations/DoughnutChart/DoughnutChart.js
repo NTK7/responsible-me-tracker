@@ -49,4 +49,10 @@ const Container = styled.div`
     font-size: large;
     font-weight: bold;
   }
+  @media screen and (max-width: 1000px) {
+    width: 300px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 280px;
+  }
 `;

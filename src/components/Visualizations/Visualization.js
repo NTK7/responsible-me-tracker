@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Fade, Zoom } from "react-reveal";
 import styled from "styled-components";
 import { db } from "../../firebase";
 import {
@@ -54,51 +55,65 @@ const Visualization = () => {
   }, []);
 
   return (
-    <Container>
-      <h1>Live Statistics</h1>
-      {loading ? (
-        <Processing />
-      ) : (
-        <main>
-          <div>
-            <p>Total Submissions</p>
-            <h4>{recordCount}</h4>
-          </div>
-          <section>
-            <PieChart
-              title="Age Group"
-              labels={["< 18", "19-29", "30-39", "40-49", "50-59", "60+"]}
-              data_={ageGroupCount}
-            />
-            <DoughnutChart
-              title="Friend Visiting"
-              labels={["Avoided", "Sometimes"]}
-              data_={friendVisitingCount}
-            />
-            <PieChart
-              title="Vaccination"
-              labels={["Single dose", "Fully Vaccinated", "Not Vaccinated"]}
-              data_={vaccinationCount}
-            />
-            <DoughnutChart
-              title="Use of Masks"
-              labels={["Avoided", "Sometimes"]}
-              data_={maskUseCount}
-            />
-            <PieChart
-              title="Public Visiting"
-              labels={["Avoided", "Sometimes"]}
-              data_={publicCount}
-            />
-            <DoughnutChart
-              title="Work Plan"
-              labels={["WFH", "Visiting to office", "Both"]}
-              data_={workPlanCount}
-            />
-          </section>
-        </main>
-      )}
-    </Container>
+    <Fade>
+      <Container>
+        <h1>Live Statistics</h1>
+        {loading ? (
+          <Processing />
+        ) : (
+          <main>
+            <div>
+              <p>Total Submissions</p>
+              <h4>{recordCount}</h4>
+            </div>
+            <section>
+              <Zoom>
+                <PieChart
+                  title="Age Group Rate"
+                  labels={["< 18", "19-29", "30-39", "40-49", "50-59", "60+"]}
+                  data_={ageGroupCount}
+                />
+              </Zoom>
+              <Zoom>
+                <DoughnutChart
+                  title="Friend Visiting Rate"
+                  labels={["Avoided", "Sometimes"]}
+                  data_={friendVisitingCount}
+                />
+              </Zoom>
+              <Zoom>
+                <PieChart
+                  title="Vaccination Rate"
+                  labels={["Single dose", "Fully Vaccinated", "Not Vaccinated"]}
+                  data_={vaccinationCount}
+                />
+              </Zoom>
+              <Zoom>
+                <DoughnutChart
+                  title="Use of Masks Rate"
+                  labels={["Avoided", "Sometimes"]}
+                  data_={maskUseCount}
+                />
+              </Zoom>
+              <Zoom>
+                <PieChart
+                  title="Public Visiting Rate"
+                  labels={["Avoided", "Sometimes"]}
+                  data_={publicCount}
+                />
+              </Zoom>
+              <Zoom>
+                <DoughnutChart
+                  title="Work Plan Rate"
+                  labels={["WFH", "Visiting to office", "Both"]}
+                  data_={workPlanCount}
+                />
+              </Zoom>
+            </section>
+          </main>
+        )}
+      </Container>
+    </Fade>
   );
 };
 
@@ -139,6 +154,23 @@ const Container = styled.div`
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    margin: 3pc 0pc;
+    > h1 {
+      font-size: 1.5rem;
+      border-radius: 1pc;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    margin: 1pc 0pc;
+    p {
+      line-height: 1pc;
+      font-size: large;
+    }
+    > h1 {
+      font-size: large;
     }
   }
 `;

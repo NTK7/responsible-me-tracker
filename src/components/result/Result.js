@@ -3,6 +3,7 @@ import GaugeChart from "react-gauge-chart";
 import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import Visualization from "../Visualizations/Visualization";
+import { Fade } from "react-reveal";
 
 function Result({ percentage, age }) {
   const [bestResults, setBestResults] = useState(false);
@@ -18,61 +19,63 @@ function Result({ percentage, age }) {
   };
 
   return (
-    <Container>
-      <h3>Your Result</h3>
-      <h4>HOW RESPONSIBLE ARE YOU?</h4>
-      <GaugeChart
-        className="gauge-chart"
-        nrOfLevels={15}
-        arcPadding={0.1}
-        cornerRadius={5}
-        percent={percentage}
-      />
-      <h4>
-        You are only{" "}
-        <strong style={{ color: "red" }}>
-          {Math.round(percentage * 10000) / 100}%
-        </strong>{" "}
-        Responsible
-      </h4>
-      <p>Take following actions and be 100% #Responsible citizen</p>
+    <Fade>
+      <Container>
+        <h3>Your Result</h3>
+        <h4>HOW RESPONSIBLE ARE YOU?</h4>
+        <GaugeChart
+          className="gauge-chart"
+          nrOfLevels={15}
+          arcPadding={0.1}
+          cornerRadius={5}
+          percent={percentage}
+        />
+        <h4>
+          You are only{" "}
+          <strong style={{ color: "red" }}>
+            {Math.round(percentage * 10000) / 100}%
+          </strong>{" "}
+          Responsible
+        </h4>
+        <p>Take following actions and be 100% #Responsible citizen</p>
 
-      <section>
-        {!bestResults ? (
-          <div>
-            <p style={{ textAlign: "center" }}>
-              Please make sure you follow the below instructions below.
-            </p>
-            <ul>
-              {!age.includes("1") && (
-                <>
-                  <li>Take the Vaccine</li>
-                  <li>Take the second dose</li>
-                </>
-              )}
-              <li> Work from home as much as possible</li>
-              <li>Avoid public places for next 2 weeks</li>
-              <li>Do not visit your friends & relatives for next 2 weeks</li>
-              <li>Always wear a mask outside home</li>
-            </ul>
-          </div>
-        ) : (
-          <h3>Great job, continue the best practices!</h3>
-        )}
-      </section>
+        <section>
+          {!bestResults ? (
+            <div>
+              <p style={{ textAlign: "center" }}>
+                Please make sure you follow the below instructions below.
+              </p>
+              <ul>
+                {!age.includes("1") && (
+                  <>
+                    <li>Take the Vaccine</li>
+                    <li>Take the second dose</li>
+                  </>
+                )}
+                <li> Work from home as much as possible</li>
+                <li>Avoid public places for next 2 weeks</li>
+                <li>Do not visit your friends & relatives for next 2 weeks</li>
+                <li>Always wear a mask outside home</li>
+              </ul>
+            </div>
+          ) : (
+            <h3>Great job, continue the best practices!</h3>
+          )}
+        </section>
 
-      <h2>THERE WON’T BE ANOTHER CHANCE TO REMIND YOU!</h2>
-      <Button
-        color="secondary"
-        variant="outlined"
-        onClick={onHandleRefreshPage}>
-        Try Again
-      </Button>
+        <h2>THERE WON’T BE ANOTHER CHANCE TO REMIND YOU!</h2>
+        <Button
+          color="secondary"
+          variant="outlined"
+          onClick={onHandleRefreshPage}>
+          Try Again
+        </Button>
 
-      {/* <main className="visualization">
-        <Visualization />
-      </main> */}
-    </Container>
+        <main className="visualization">
+          <Visualization />
+        </main>
+      </Container>
+    </Fade>
   );
 }
 
@@ -132,13 +135,13 @@ const Container = styled.div`
     > p {
       font-size: medium;
       font-weight: bold;
-      margin: 0.5pc;
+      margin: 0.8pc;
     }
     > section {
       margin: 0;
     }
     > button {
-      width: 80%;
+      width: 90%;
     }
   }
 `;
