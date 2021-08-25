@@ -24,19 +24,20 @@ const Visualization = () => {
   const [workPlanCount, setWorkPlanCount] = useState([]);
   const [vaccinationCount, setVaccinationCount] = useState([]);
 
-  useEffect(() => {
-    // This useEffect will execute when ever the page refreshes so that, it can reset to original state for graph visualization
+  const reset = () => {
+    setRecordCount(0);
     ageGroupResult(null, true);
     maskResult(null, true);
     friendsResult(null, true);
     publicResult(null, true);
     workPlanResult(null, true);
     vaccinationsResult(null, true);
-  }, []);
+  }
 
   const fetchData = async () => {
     setLoading(true);
     await db.collection("users").onSnapshot((snapshot) => {
+      reset();
       snapshot.docs.forEach((doc) => {
         setAgeGroupCount(ageGroupResult(doc.data().age, false));
         setMaskUseCount(maskResult(doc.data().useOfMask, false));
@@ -49,8 +50,9 @@ const Visualization = () => {
       setLoading(false);
     });
   };
+
   useEffect(() => {
-    setRecordCount(0);
+    reset();
     fetchData();
   }, []);
 
