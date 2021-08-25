@@ -40,7 +40,9 @@ function Result({ percentage, age }) {
       <section>
         {!bestResults ? (
           <div>
-            <p>Please make sure you follow the below instructions below.</p>
+            <p style={{ textAlign: "center" }}>
+              Please make sure you follow the below instructions below.
+            </p>
             <ul>
               {!age.includes("1") && (
                 <>
@@ -67,9 +69,9 @@ function Result({ percentage, age }) {
         Try Again
       </Button>
 
-      <main className="visualization">
+      {/* <main className="visualization">
         <Visualization />
-      </main>
+      </main> */}
     </Container>
   );
 }
@@ -112,5 +114,31 @@ const Container = styled.div`
   }
   .visualization {
     width: 100%;
+  }
+  @media screen and (max-width: 1000px) {
+    .gauge-chart {
+      margin: 0.5pc;
+      width: 60vw !important;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .gauge-chart {
+      width: 80vw !important;
+    }
+    margin: 1pc;
+    > h4,
+    > h3,
+    > h2,
+    > p {
+      font-size: medium;
+      font-weight: bold;
+      margin: 0.5pc;
+    }
+    > section {
+      margin: 0;
+    }
+    > button {
+      width: 80%;
+    }
   }
 `;
