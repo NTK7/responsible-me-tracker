@@ -63,11 +63,14 @@ const App = () => {
       });
   };
   return (
-    <Container className="container mt-3">
+    <Container className="container">
       <h2>Responsible Me Tracker</h2>
 
       {!displayResult ? (
         <section>
+          <p>
+            <strong>Fill out the form below to get your score!</strong>
+          </p>
           <form onSubmit={onHandleSubmit}>
             {/* District */}
             <FormControl
@@ -295,7 +298,7 @@ const App = () => {
       ) : processing ? (
         <Processing />
       ) : (
-        <Result percentage={totalWeight} age={age}/>
+        <Result percentage={totalWeight} age={age} />
       )}
     </Container>
   );
@@ -304,34 +307,68 @@ const App = () => {
 export default App;
 
 const Container = styled.div`
-  margin-bottom: 3pc;
+  padding: 2pc;
+  /* border: 1px solid red; */
   > h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: #f21313;
     padding: 1pc;
     text-transform: uppercase;
     /* font-weight: bold; */
     font-size: 1.8rem;
-    margin-top: 2pc;
     background-color: #fff2f2;
   }
   > section {
-    padding: 3pc 1pc;
-
+    padding: 3pc 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px red solid; */
     > form {
-      /* border: 1px red solid; */
+      width: 40vw;
+      /* border: 1px blue solid; */
       display: flex;
       flex-direction: column;
-      > button {
-        width: 20%;
-      }
-      .text-field {
-        width: 40%;
-      }
+      legend{
+          line-height: 1.5pc;
+        }
       .form-control {
         margin: 1pc 0;
+      }
+      button {
+        font-size: medium;
+        margin: 1pc 0;
+      }
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    > section {
+      padding: 2pc 0;
+      > form {
+        width: 50vw;
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    margin: 0 !important;
+    padding: 0 !important;
+    > h2 {
+      font-size: larger;
+      font-weight: bold;
+    }
+    > section {
+      padding: 1pc 0;
+      > p {
+        text-align: center;
+        padding: 0 2pc;
+      }
+      > form {
+        width: 80vw;
+       
       }
     }
   }
