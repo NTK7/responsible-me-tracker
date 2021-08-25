@@ -12,6 +12,7 @@ import styled from "styled-components";
 import Processing from "../components/Processing/Processing";
 import Result from "../components/Result/Result";
 import { db } from "../firebase";
+import { Bounce, Zoom, Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";
 
 const App = () => {
@@ -63,244 +64,246 @@ const App = () => {
       });
   };
   return (
-    <Container className="container">
-      <h2>Responsible Me Tracker</h2>
+    <Fade>
+      <Container className="container">
+        <h2>Responsible Me Tracker</h2>
 
-      {!displayResult ? (
-        <section>
-          <p>
-            <strong>Fill out the form below to get your score!</strong>
-          </p>
-          <form onSubmit={onHandleSubmit}>
-            {/* District */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <TextField
-                label="Enter your district"
-                required={true}
+        {!displayResult ? (
+          <section>
+            <p>
+              <strong>Fill out the form below to get your score!</strong>
+            </p>
+            <form onSubmit={onHandleSubmit}>
+              {/* District */}
+              <FormControl
                 color="secondary"
-                variant="filled"
-                value={district}
-                onChange={(e) => setDistrict(e.target.value)}
-                className="text-field"
-              />
-            </FormControl>
-            {/* age group */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <FormLabel component="legend">Age Group</FormLabel>
-              <RadioGroup
-                aria-label="ageGroup"
-                name="ageGroup"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                required>
-                <FormControlLabel
-                  value="0-17"
-                  control={<Radio required={true} />}
-                  label="Below 18"
+                component="fieldset"
+                className="form-control">
+                <TextField
+                  label="Enter your district"
+                  required={true}
+                  color="secondary"
+                  variant="filled"
+                  value={district}
+                  onChange={(e) => setDistrict(e.target.value)}
+                  className="text-field"
                 />
-                <FormControlLabel
-                  value="19-29"
-                  control={<Radio required={true} />}
-                  label="19-29"
-                />
-                <FormControlLabel
-                  value="30-39"
-                  control={<Radio required={true} />}
-                  label="30-39"
-                />
-                <FormControlLabel
-                  value="40-49"
-                  control={<Radio required={true} />}
-                  label="40-49"
-                />
-                <FormControlLabel
-                  value="50-59"
-                  control={<Radio required={true} />}
-                  label="50-59"
-                />
-                <FormControlLabel
-                  value="60+"
-                  control={<Radio required={true} />}
-                  label="60+"
-                />
-              </RadioGroup>
-            </FormControl>
+              </FormControl>
+              {/* age group */}
+              <FormControl
+                color="secondary"
+                component="fieldset"
+                className="form-control">
+                <FormLabel component="legend">Age Group</FormLabel>
+                <RadioGroup
+                  aria-label="ageGroup"
+                  name="ageGroup"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  required>
+                  <FormControlLabel
+                    value="0-17"
+                    control={<Radio required={true} />}
+                    label="Below 18"
+                  />
+                  <FormControlLabel
+                    value="19-29"
+                    control={<Radio required={true} />}
+                    label="19-29"
+                  />
+                  <FormControlLabel
+                    value="30-39"
+                    control={<Radio required={true} />}
+                    label="30-39"
+                  />
+                  <FormControlLabel
+                    value="40-49"
+                    control={<Radio required={true} />}
+                    label="40-49"
+                  />
+                  <FormControlLabel
+                    value="50-59"
+                    control={<Radio required={true} />}
+                    label="50-59"
+                  />
+                  <FormControlLabel
+                    value="60+"
+                    control={<Radio required={true} />}
+                    label="60+"
+                  />
+                </RadioGroup>
+              </FormControl>
 
-            {/* Vaccination */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <FormLabel component="legend">Vaccination</FormLabel>
-              <RadioGroup
-                aria-label="vaccination"
-                name="vaccination"
-                value={vaccination}
-                onChange={(e) => setVaccination(e.target.value)}
-                required>
-                <FormControlLabel
-                  value="single"
-                  control={<Radio required={true} />}
-                  label="Single Dose"
-                />
-                <FormControlLabel
-                  value="fully"
-                  control={<Radio required={true} />}
-                  label="Fully Vaccinated"
-                />
-                <FormControlLabel
-                  value="not"
-                  control={<Radio required={true} />}
-                  label="Not Vaccinated"
-                />
-              </RadioGroup>
-            </FormControl>
+              {/* Vaccination */}
+              <FormControl
+                color="secondary"
+                component="fieldset"
+                className="form-control">
+                <FormLabel component="legend">Vaccination</FormLabel>
+                <RadioGroup
+                  aria-label="vaccination"
+                  name="vaccination"
+                  value={vaccination}
+                  onChange={(e) => setVaccination(e.target.value)}
+                  required>
+                  <FormControlLabel
+                    value="single"
+                    control={<Radio required={true} />}
+                    label="Single Dose"
+                  />
+                  <FormControlLabel
+                    value="fully"
+                    control={<Radio required={true} />}
+                    label="Fully Vaccinated"
+                  />
+                  <FormControlLabel
+                    value="not"
+                    control={<Radio required={true} />}
+                    label="Not Vaccinated"
+                  />
+                </RadioGroup>
+              </FormControl>
 
-            {/* workPlan */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <FormLabel component="legend">
-                Work plan for next 2 weeks
-              </FormLabel>
-              <RadioGroup
-                aria-label="workPlan"
-                name="workPlan"
-                value={workPlan}
-                onChange={(e) => setWorkPlan(e.target.value)}
-                required>
-                <FormControlLabel
-                  value="wft"
-                  control={<Radio required={true} />}
-                  label="Work from home"
-                />
-                <FormControlLabel
-                  value="visiting"
-                  control={<Radio required={true} />}
-                  label="Visiting to office"
-                />
-                <FormControlLabel
-                  value="both"
-                  control={<Radio required={true} />}
-                  label="Both"
-                />
-              </RadioGroup>
-            </FormControl>
+              {/* workPlan */}
+              <FormControl
+                color="secondary"
+                component="fieldset"
+                className="form-control">
+                <FormLabel component="legend">
+                  Work plan for next 2 weeks
+                </FormLabel>
+                <RadioGroup
+                  aria-label="workPlan"
+                  name="workPlan"
+                  value={workPlan}
+                  onChange={(e) => setWorkPlan(e.target.value)}
+                  required>
+                  <FormControlLabel
+                    value="wft"
+                    control={<Radio required={true} />}
+                    label="Work from home"
+                  />
+                  <FormControlLabel
+                    value="visiting"
+                    control={<Radio required={true} />}
+                    label="Visiting to office"
+                  />
+                  <FormControlLabel
+                    value="both"
+                    control={<Radio required={true} />}
+                    label="Both"
+                  />
+                </RadioGroup>
+              </FormControl>
 
-            {/* publicVisiting */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <FormLabel component="legend">
-                Visiting to public places including shops
-              </FormLabel>
-              <RadioGroup
-                aria-label="publicVisiting"
-                name="publicVisiting"
-                value={publicVisiting}
-                onChange={(e) => setPublicVisiting(e.target.value)}
-                required>
-                <FormControlLabel
-                  value="avoided"
-                  control={<Radio required={true} />}
-                  label="Avoided"
-                />
-                <FormControlLabel
-                  value="sometimes"
-                  control={<Radio required={true} />}
-                  label="Sometimes"
-                />
-                {/* <FormControlLabel
+              {/* publicVisiting */}
+              <FormControl
+                color="secondary"
+                component="fieldset"
+                className="form-control">
+                <FormLabel component="legend">
+                  Visiting to public places including shops
+                </FormLabel>
+                <RadioGroup
+                  aria-label="publicVisiting"
+                  name="publicVisiting"
+                  value={publicVisiting}
+                  onChange={(e) => setPublicVisiting(e.target.value)}
+                  required>
+                  <FormControlLabel
+                    value="avoided"
+                    control={<Radio required={true} />}
+                    label="Avoided"
+                  />
+                  <FormControlLabel
+                    value="sometimes"
+                    control={<Radio required={true} />}
+                    label="Sometimes"
+                  />
+                  {/* <FormControlLabel
                   value="Both"
                   control={<Radio required={true} />}
                   label="Both"
                 /> */}
-              </RadioGroup>
-            </FormControl>
+                </RadioGroup>
+              </FormControl>
 
-            {/* friendVisiting */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <FormLabel component="legend">
-                Visiting friends / relatives during next 2 weeks
-              </FormLabel>
-              <RadioGroup
-                aria-label="friendVisiting"
-                name="friendVisiting"
-                value={friendVisiting}
-                onChange={(e) => setFriendVisiting(e.target.value)}
-                required>
-                <FormControlLabel
-                  value="avoided"
-                  control={<Radio required={true} />}
-                  label="Avoided"
-                />
-                <FormControlLabel
-                  value="sometimes"
-                  control={<Radio required={true} />}
-                  label="Sometimes"
-                />
-                {/* <FormControlLabel
+              {/* friendVisiting */}
+              <FormControl
+                color="secondary"
+                component="fieldset"
+                className="form-control">
+                <FormLabel component="legend">
+                  Visiting friends / relatives during next 2 weeks
+                </FormLabel>
+                <RadioGroup
+                  aria-label="friendVisiting"
+                  name="friendVisiting"
+                  value={friendVisiting}
+                  onChange={(e) => setFriendVisiting(e.target.value)}
+                  required>
+                  <FormControlLabel
+                    value="avoided"
+                    control={<Radio required={true} />}
+                    label="Avoided"
+                  />
+                  <FormControlLabel
+                    value="sometimes"
+                    control={<Radio required={true} />}
+                    label="Sometimes"
+                  />
+                  {/* <FormControlLabel
                   value="Both"
                   control={<Radio required={true} />}
                   label="Both"
                 /> */}
-              </RadioGroup>
-            </FormControl>
+                </RadioGroup>
+              </FormControl>
 
-            {/* useOfMask */}
-            <FormControl
-              color="secondary"
-              component="fieldset"
-              className="form-control">
-              <FormLabel component="legend">
-                Wearing Mask out side home
-              </FormLabel>
-              <RadioGroup
-                aria-label="useOfMask"
-                name="useOfMask"
-                value={useOfMask}
-                onChange={(e) => setUseOfMask(e.target.value)}
-                required>
-                <FormControlLabel
-                  value="always"
-                  control={<Radio required={true} />}
-                  label="Always"
-                />
-                <FormControlLabel
-                  value="sometimes"
-                  control={<Radio required={true} />}
-                  label="Sometimes"
-                />
-                {/* <FormControlLabel
+              {/* useOfMask */}
+              <FormControl
+                color="secondary"
+                component="fieldset"
+                className="form-control">
+                <FormLabel component="legend">
+                  Wearing Mask out side home
+                </FormLabel>
+                <RadioGroup
+                  aria-label="useOfMask"
+                  name="useOfMask"
+                  value={useOfMask}
+                  onChange={(e) => setUseOfMask(e.target.value)}
+                  required>
+                  <FormControlLabel
+                    value="always"
+                    control={<Radio required={true} />}
+                    label="Always"
+                  />
+                  <FormControlLabel
+                    value="sometimes"
+                    control={<Radio required={true} />}
+                    label="Sometimes"
+                  />
+                  {/* <FormControlLabel
                   value="Both"
                   control={<Radio required={true} />}
                   label="Both"
                 /> */}
-              </RadioGroup>
-            </FormControl>
+                </RadioGroup>
+              </FormControl>
 
-            <Button variant="contained" color="secondary" type="submit">
-              Submit
-            </Button>
-          </form>
-        </section>
-      ) : processing ? (
-        <Processing />
-      ) : (
-        <Result percentage={totalWeight} age={age} />
-      )}
-    </Container>
+              <Button variant="contained" color="secondary" type="submit">
+                Submit
+              </Button>
+            </form>
+          </section>
+        ) : processing ? (
+          <Processing />
+        ) : (
+          <Result percentage={totalWeight} age={age} />
+        )}
+      </Container>
+    </Fade>
   );
 };
 
@@ -316,27 +319,39 @@ const Container = styled.div`
     text-align: center;
     color: #f21313;
     padding: 1pc;
-    text-transform: uppercase;
+    border-radius: 1pc;
+    /* text-transform: uppercase; */
     /* font-weight: bold; */
     font-size: 1.8rem;
     background-color: #fff2f2;
   }
   > section {
     padding: 3pc 0;
+    border-radius: 1pc;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: whitesmoke;
     /* border: 1px red solid; */
+    > p {
+      text-align: center;
+      color: grey;
+      padding: 0 2pc;
+    }
+    /* input {
+      background-color: #fff2f2;
+    } */
     > form {
       width: 40vw;
       /* border: 1px blue solid; */
       display: flex;
       flex-direction: column;
-      legend{
-          line-height: 1.5pc;
-        }
+      legend {
+        line-height: 1.5pc;
+      }
       .form-control {
+        background-color: whitesmoke;
         margin: 1pc 0;
       }
       button {
@@ -358,17 +373,19 @@ const Container = styled.div`
     padding: 0 !important;
     > h2 {
       font-size: larger;
+      border-radius: 0pc;
       font-weight: bold;
+      border-bottom: 1px solid red;
+      margin-bottom: 0;
     }
     > section {
+      border-radius: 0pc;
       padding: 1pc 0;
       > p {
-        text-align: center;
-        padding: 0 2pc;
+        font-weight: lighter;
       }
       > form {
         width: 80vw;
-       
       }
     }
   }
