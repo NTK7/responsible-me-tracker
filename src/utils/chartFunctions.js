@@ -10,6 +10,8 @@ let workPlanCount = [0, 0, 0];
 // [avoided, sometimes]
 let publicCount = [0, 0];
 let friendsCount = [0, 0];
+
+// [always, sometimes]
 let maskCount = [0, 0];
 
 export const maskResult = (data, reset) => {

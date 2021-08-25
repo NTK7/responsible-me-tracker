@@ -24,7 +24,7 @@ const App = () => {
   const [useOfMask, setUseOfMask] = useState(null);
   const [totalWeight, setTotalWeight] = useState(null);
 
-  const [displayResult, setDisplayResult] = useState(true);
+  const [displayResult, setDisplayResult] = useState(false);
   const [processing, setProcessing] = useState(false);
 
   const onHandleSubmit = async (e) => {
@@ -295,8 +295,7 @@ const App = () => {
       ) : processing ? (
         <Processing />
       ) : (
-        <Result percentage={0.877} age={"25"} />
-        // <Result percentage={totalWeight} age={age}/>
+        <Result percentage={totalWeight} age={age}/>
       )}
     </Container>
   );

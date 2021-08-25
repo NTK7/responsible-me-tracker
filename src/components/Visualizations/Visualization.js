@@ -45,12 +45,12 @@ const Visualization = () => {
         setVaccinationCount(vaccinationsResult(doc.data().vaccination, false));
         setRecordCount((recordCount) => recordCount + 1);
       });
+      setLoading(false);
     });
   };
   useEffect(() => {
     setRecordCount(0);
     fetchData();
-    setLoading(false);
   }, []);
 
   return (
@@ -90,7 +90,6 @@ const Visualization = () => {
               labels={["Avoided", "Sometimes"]}
               data_={publicCount}
             />
-
             <DoughnutChart
               title="Work Plan"
               labels={["WFH", "Visiting to office", "Both"]}
