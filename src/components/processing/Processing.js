@@ -22,4 +22,16 @@ const Container = styled.div`
     object-fit: contain;
     width: 150px;
   }
+  > p {
+    text-align: center;
+  }
+  @media screen and (max-width: 500px) {
+    margin: 1pc 0;
+    > img {
+      width: 100px;
+    }
+    > p {
+      padding: 0.5pc;
+    }
+  }
 `;
