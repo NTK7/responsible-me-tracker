@@ -3,19 +3,21 @@ import GaugeChart from "react-gauge-chart";
 import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import { Fade } from "react-reveal";
+import { useHistory } from "react-router";
 
 function Result({ percentage, age }) {
   const [bestResults, setBestResults] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     console.log(percentage);
     percentage === 1 && setBestResults(true);
   }, [percentage]);
 
-  const onHandleRefreshPage = () => {
-    window.scrollTo(0, 0);
-    window.location.href = "/";
-  };
+  // const onHandleRefreshPage = () => {
+  //   window.scrollTo(0, 0);
+  //   window.location.href = "/";
+  // };
 
   return (
     <Fade>
@@ -66,8 +68,8 @@ function Result({ percentage, age }) {
         <Button
           color="secondary"
           variant="outlined"
-          onClick={onHandleRefreshPage}>
-          Try Again
+          onClick={() => history.push('/visualization')}>
+          View Stats
         </Button>
       </Container>
     </Fade>
