@@ -7,7 +7,6 @@ import {
   Radio,
   MenuItem,
   RadioGroup,
-  TextField,
 } from "@material-ui/core";
 import { useState } from "react";
 import styled from "styled-components";
@@ -25,7 +24,6 @@ const Home = () => {
   const [publicVisiting, setPublicVisiting] = useState(null);
   const [friendVisiting, setFriendVisiting] = useState(null);
   const [useOfMask, setUseOfMask] = useState(null);
-  const [totalWeight, setTotalWeight] = useState(null);
 
   const [displayResult, setDisplayResult] = useState(true);
   const [processing, setProcessing] = useState(false);
@@ -78,7 +76,6 @@ const Home = () => {
       WEIGHTS.public[publicVisiting] +
       WEIGHTS.friends[friendVisiting] +
       WEIGHTS.mask[useOfMask];
-    setTotalWeight(totalWeight_);
     await db
       .collection("users")
       .add({

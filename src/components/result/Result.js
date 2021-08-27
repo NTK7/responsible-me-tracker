@@ -4,10 +4,23 @@ import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
 import { Fade } from "react-reveal";
 import { useHistory } from "react-router";
-
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+  WhatsappIcon,
+} from "react-share";
 function Result({ percentage, age }) {
   const [bestResults, setBestResults] = useState(false);
   const history = useHistory();
+  const BASE_URL = window.location.href;
+  const content = `I have scored ${
+    Math.round(percentage * 10000) / 100
+  }% from the Responsible Me Tracker, click the link and find yours too!`;
 
   useEffect(() => {
     console.log(percentage);
@@ -68,9 +81,38 @@ function Result({ percentage, age }) {
         <Button
           color="secondary"
           variant="outlined"
-          onClick={() => history.push('/visualization')}>
+          onClick={() => history.push("/visualization")}>
           View Stats
         </Button>
+
+        <div className="share__section">
+          <p>Share on</p>
+          <FacebookShareButton
+            url={BASE_URL}
+            quote={content}
+            className="share-icon">
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
+          <WhatsappShareButton
+            url={BASE_URL}
+            title={content}
+            separator=":: "
+            className="share-icon">
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton>
+          <TwitterShareButton
+            url={BASE_URL}
+            title={content}
+            className="share-icon">
+            <TwitterIcon size={32} round />
+          </TwitterShareButton>
+          <TelegramShareButton
+            url={BASE_URL}
+            title={content}
+            className="share-icon">
+            <TelegramIcon size={32} round />
+          </TelegramShareButton>
+        </div>
       </Container>
     </Fade>
   );
@@ -114,6 +156,18 @@ const Container = styled.div`
   }
   .visualization {
     width: 100%;
+  }
+  .share__section {
+    margin: 0.5pc 0;
+    > p {
+      font-size: small;
+      color: grey;
+      text-align: center;
+      margin: 0.2pc;
+    }
+    .share-icon {
+      margin: 0 0.1pc;
+    }
   }
   @media screen and (max-width: 1000px) {
     .gauge-chart {
