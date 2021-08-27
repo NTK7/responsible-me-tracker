@@ -27,10 +27,10 @@ function Result({ percentage, age }) {
     percentage === 1 && setBestResults(true);
   }, [percentage]);
 
-  // const onHandleRefreshPage = () => {
-  //   window.scrollTo(0, 0);
-  //   window.location.href = "/";
-  // };
+  const onHandleRefreshPage = () => {
+    window.scrollTo(0, 0);
+    window.location.href = "/";
+  };
 
   return (
     <Fade>
@@ -81,6 +81,12 @@ function Result({ percentage, age }) {
         <Button
           color="secondary"
           variant="outlined"
+          onClick={onHandleRefreshPage}>
+          Try Again
+        </Button>
+        <Button
+          color="secondary"
+          variant="contained"
           onClick={() => history.push("/visualization")}>
           View Stats
         </Button>
@@ -152,7 +158,9 @@ const Container = styled.div`
     margin: 2pc;
   }
   > button {
-    margin: 1pc;
+    margin: .5pc;
+    width: 20%;
+    min-width: fit-content;
   }
   .visualization {
     width: 100%;
