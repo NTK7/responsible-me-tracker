@@ -16,7 +16,7 @@ import { db } from "../firebase";
 import { Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";
 
-const Home = () => {
+const App = () => {
   const [age, setAge] = useState(null);
   const [district, setDistrict] = useState("");
   const [vaccination, setVaccination] = useState(null);
@@ -24,8 +24,9 @@ const Home = () => {
   const [publicVisiting, setPublicVisiting] = useState(null);
   const [friendVisiting, setFriendVisiting] = useState(null);
   const [useOfMask, setUseOfMask] = useState(null);
+  const [totalWeight, setTotalWeight] = useState(null);
 
-  const [displayResult, setDisplayResult] = useState(true);
+  const [displayResult, setDisplayResult] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -76,6 +77,7 @@ const Home = () => {
       WEIGHTS.public[publicVisiting] +
       WEIGHTS.friends[friendVisiting] +
       WEIGHTS.mask[useOfMask];
+    setTotalWeight(totalWeight_);
     await db
       .collection("users")
       .add({
@@ -274,11 +276,6 @@ const Home = () => {
                     control={<Radio required={true} />}
                     label="Sometimes"
                   />
-                  {/* <FormControlLabel
-                    value="Both"
-                    control={<Radio required={true} />}
-                    label="Both"
-                  /> */}
                 </RadioGroup>
               </FormControl>
 
@@ -306,11 +303,6 @@ const Home = () => {
                     control={<Radio required={true} />}
                     label="Sometimes"
                   />
-                  {/* <FormControlLabel
-                    value="Both"
-                    control={<Radio required={true} />}
-                    label="Both"
-                  /> */}
                 </RadioGroup>
               </FormControl>
 
@@ -338,11 +330,6 @@ const Home = () => {
                     control={<Radio required={true} />}
                     label="Sometimes"
                   />
-                  {/* <FormControlLabel
-                    value="Both"
-                    control={<Radio required={true} />}
-                    label="Both"
-                  /> */}
                 </RadioGroup>
               </FormControl>
 
@@ -354,15 +341,14 @@ const Home = () => {
         ) : processing ? (
           <Processing />
         ) : (
-          // <Result percentage={totalWeight} age={age} />
-          <Result percentage={0.23} age={"60+"} />
+          <Result percentage={totalWeight} age={age} />
         )}
       </Container>
     </Fade>
   );
 };
 
-export default Home;
+export default App;
 
 const Container = styled.div`
   padding: 2pc;
