@@ -2,7 +2,6 @@ import styled from "styled-components";
 import GaugeChart from "react-gauge-chart";
 import { useEffect, useState } from "react";
 import { Button } from "@material-ui/core";
-import Visualization from "../Visualizations/Visualization";
 import { Fade } from "react-reveal";
 
 function Result({ percentage, age }) {
@@ -70,10 +69,6 @@ function Result({ percentage, age }) {
           onClick={onHandleRefreshPage}>
           Try Again
         </Button>
-
-        <main className="visualization">
-          <Visualization />
-        </main>
       </Container>
     </Fade>
   );
