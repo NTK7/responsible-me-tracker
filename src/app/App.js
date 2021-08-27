@@ -3,7 +3,9 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  Menu,
   Radio,
+  MenuItem,
   RadioGroup,
   TextField,
 } from "@material-ui/core";
@@ -27,6 +29,43 @@ const App = () => {
 
   const [displayResult, setDisplayResult] = useState(false);
   const [processing, setProcessing] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const allDistricts = [
+    "Jaffna",
+    "Kilinochchi",
+    "Mannar",
+    "Mullaitivu",
+    "Vavuniya",
+    "Puttalam",
+    "Kurunegala",
+    "Gampaha",
+    "Colombo",
+    "Kalutara",
+    "Anuradhapura",
+    "Polonnaruwa",
+    "Matara",
+    "Kandy",
+    "Nuwara Eliya",
+    "Kegalle",
+    "Ratnapura",
+    "Trincomalee",
+    "Batticaloa",
+    "Ampara",
+    "Badulla",
+    "Monaragala",
+    "Hambantota",
+    "Matale",
+    "Galle",
+  ];
 
   const onHandleSubmit = async (e) => {
     e.preventDefault();
@@ -79,15 +118,33 @@ const App = () => {
                 color="secondary"
                 component="fieldset"
                 className="form-control">
-                <TextField
-                  label="Enter your district"
-                  required={true}
+                <FormLabel component="legend"> District </FormLabel>
+                <Button
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
                   color="secondary"
-                  variant="filled"
-                  value={district}
-                  onChange={(e) => setDistrict(e.target.value)}
-                  className="text-field"
-                />
+                  variant="contained"
+                  style={{ width: "fit-content", margin: "0" }}
+                  onClick={handleClick}>
+                  {district ? district : "Select District"}
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}>
+                  {allDistricts.map((district, key) => (
+                    <MenuItem
+                      key={key}
+                      onClick={() => {
+                        handleClose();
+                        setDistrict(district);
+                      }}>
+                      {district}
+                    </MenuItem>
+                  ))}
+                </Menu>
               </FormControl>
               {/* age group */}
               <FormControl
