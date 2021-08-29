@@ -15,6 +15,7 @@ import Result from "../components/Result/Result";
 import { db } from "../firebase";
 import { Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";
+import { allDistricts } from "../utils/constants";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -37,34 +38,6 @@ const App = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const allDistricts = [
-    "Jaffna",
-    "Kilinochchi",
-    "Mannar",
-    "Mullaitivu",
-    "Vavuniya",
-    "Puttalam",
-    "Kurunegala",
-    "Gampaha",
-    "Colombo",
-    "Kalutara",
-    "Anuradhapura",
-    "Polonnaruwa",
-    "Matara",
-    "Kandy",
-    "Nuwara Eliya",
-    "Kegalle",
-    "Ratnapura",
-    "Trincomalee",
-    "Batticaloa",
-    "Ampara",
-    "Badulla",
-    "Monaragala",
-    "Hambantota",
-    "Matale",
-    "Galle",
-  ];
 
   const onHandleSubmit = async (e) => {
     e.preventDefault();
@@ -104,7 +77,11 @@ const App = () => {
   return (
     <Fade>
       <Container className="container">
-        <h2>Responsible Me Tracker</h2>
+        <h2>
+          #RESPONSIBLE
+          <img src="/logos/logo.png" alt="" />
+          E-TRACKER
+        </h2>
 
         {!displayResult ? (
           <section>
@@ -358,13 +335,14 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #f21313;
     padding: 1pc;
+    font-weight: bold;
     border-radius: 1pc;
-    /* text-transform: uppercase; */
-    /* font-weight: bold; */
-    font-size: 1.8rem;
-    background-color: #fff2f2;
+    font-size: 2rem;
+    > img {
+      object-fit: contain;
+      height: 40px;
+    }
   }
   > section {
     padding: 3pc 0;
@@ -418,6 +396,11 @@ const Container = styled.div`
       font-weight: bold;
       border-bottom: 1px solid red;
       margin-bottom: 0;
+      text-align: center;
+      padding: 1pc 0;
+      > img {
+        height: 20px;
+      }
     }
     > section {
       border-radius: 0pc;
