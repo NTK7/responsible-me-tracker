@@ -4,13 +4,11 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import { useState } from "react";
 import styled from "styled-components";
 import BottomLogo from "../BottomLogo/BottomLogo";
 
-const FriendVisiting = () => {
+const FriendVisiting = ({ friendVisiting, setFriendVisiting }) => {
   const FRIEND_VISITING = "/bg/01-06.png";
-  const [friendVisiting, setFriendVisiting] = useState(null);
 
   return (
     <Container backgroundImg={FRIEND_VISITING}>
@@ -50,15 +48,15 @@ const Container = styled.div`
   ${({ backgroundImg }) => `background-image: url(${backgroundImg})`};
   background-position: center;
   background-size: contain;
-  /* background-repeat: no-repeat; */
   height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* border: 2px black solid; */
   overflow-x: hidden;
+  /* background-repeat: no-repeat; */
+  /* border: 2px black solid; */
 
   > main {
     width: 100%;

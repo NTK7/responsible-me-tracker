@@ -5,13 +5,11 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import { useState } from "react";
 import styled from "styled-components";
 import BottomLogo from "../BottomLogo/BottomLogo";
 
-const UseOfMask = () => {
+const UseOfMask = ({ useOfMask, setUseOfMask }) => {
   const USE_OF_MASK = "/bg/01-07.png";
-  const [useOfMask, setUseOfMask] = useState(null);
 
   return (
     <Container backgroundImg={USE_OF_MASK}>
@@ -40,7 +38,7 @@ const UseOfMask = () => {
             />
           </RadioGroup>
         </FormControl>
-        <Button>SUBMIT</Button>
+        <Button type="submit">SUBMIT</Button>
       </main>
       <BottomLogo />
     </Container>
@@ -53,15 +51,15 @@ const Container = styled.div`
   ${({ backgroundImg }) => `background-image: url(${backgroundImg})`};
   background-position: center;
   background-size: contain;
-  /* background-repeat: no-repeat; */
   height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* border: 2px black solid; */
   overflow-x: hidden;
+  /* background-repeat: no-repeat; */
+  /* border: 2px black solid; */
 
   > main {
     width: 100%;

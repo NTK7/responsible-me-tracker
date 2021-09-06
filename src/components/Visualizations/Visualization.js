@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import { Fade, Zoom } from "react-reveal";
-import styled from "styled-components";
-import { db } from "../../firebase";
 import {
   ageGroupResult,
   friendsResult,
@@ -10,6 +6,10 @@ import {
   vaccinationsResult,
   workPlanResult,
 } from "../../utils/chartFunctions";
+import { useEffect, useState } from "react";
+import { Fade, Zoom } from "react-reveal";
+import styled from "styled-components";
+import { db } from "../../firebase";
 import Processing from "../Processing/Processing";
 import DoughnutChart from "./DoughnutChart/DoughnutChart";
 import PieChart from "./PieChart/PieChart";

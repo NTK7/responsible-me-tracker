@@ -8,7 +8,7 @@ import {
   MenuItem,
   RadioGroup,
 } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Processing from "../components/Processing/Processing";
 import Result from "../components/Result/Result";
@@ -48,6 +48,10 @@ const App = () => {
     setAnchorEl(null);
   };
 
+  useEffect(() => {
+    console.log(district);
+  }, [district]);
+
   const onHandleSubmit = async (e) => {
     e.preventDefault();
     setDisplayResult(true);
@@ -86,15 +90,32 @@ const App = () => {
   return (
     <Fade>
       <Container>
-        <HomeBanner />
-        <FormInfo />
-        <SelectDistrict />
-        <AgeGroup />
-        <Vaccination />
-        <WorkPlan />
-        <PublicVisiting />
-        <FriendVisiting />
-        <UseOfMask />
+        <form onSubmit={onHandleSubmit}>
+          <HomeBanner />
+          <FormInfo />
+          <SelectDistrict
+            handleClick={handleClick}
+            handleClose={handleClose}
+            anchorEl={anchorEl}
+            district={district}
+            setDistrict={setDistrict}
+          />
+          <AgeGroup age={age} setAge={setAge} />
+          <Vaccination
+            vaccination={vaccination}
+            setVaccination={setVaccination}
+          />
+          <WorkPlan workPlan={workPlan} setWorkPlan={setWorkPlan} />
+          <PublicVisiting
+            publicVisiting={publicVisiting}
+            setPublicVisiting={setPublicVisiting}
+          />
+          <FriendVisiting
+            friendVisiting={friendVisiting}
+            setFriendVisiting={setFriendVisiting}
+          />
+          <UseOfMask useOfMask={useOfMask} setUseOfMask={setUseOfMask} />
+        </form>
       </Container>
     </Fade>
   );
@@ -103,85 +124,5 @@ const App = () => {
 export default App;
 
 const Container = styled.div`
-  scroll-snap-type: mandatory; 
-  /* padding: 2pc;
-  > h2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1pc;
-    font-weight: bold;
-    border-radius: 1pc;
-    font-size: 2rem;
-    > img {
-      object-fit: contain;
-      height: 40px;
-    }
-  }
-  > section {
-    padding: 3pc 0;
-    border-radius: 1pc;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: whitesmoke;
-    > p {
-      text-align: center;
-      color: grey;
-      padding: 0 2pc;
-    }
-    > form {
-      width: 40vw;
-      display: flex;
-      flex-direction: column;
-      legend {
-        line-height: 1.5pc;
-      }
-      .form-control {
-        background-color: whitesmoke;
-        margin: 1pc 0;
-      }
-      button {
-        font-size: medium;
-        margin: 1pc 0;
-      }
-    }
-  }
-  @media screen and (max-width: 1000px) {
-    > section {
-      padding: 2pc 0;
-      > form {
-        width: 50vw;
-      }
-    }
-  }
-  @media screen and (max-width: 500px) {
-    margin: 0 !important;
-    padding: 0 !important;
-    > h2 {
-      font-size: larger;
-      border-radius: 0pc;
-      font-weight: bold;
-      border-bottom: 1px solid red;
-      margin-bottom: 0;
-      text-align: center;
-      padding: 1pc 0;
-      > img {
-        height: 20px;
-      }
-    }
-    > section {
-      border-radius: 0pc;
-      padding: 1pc 0;
-      > p {
-        font-weight: lighter;
-        font-size: small;
-      }
-      > form {
-        width: 80vw;
-      }
-    }
-  } */
+  scroll-snap-type: mandatory;
 `;

@@ -1,21 +1,16 @@
 import { Button, FormControl, Menu, MenuItem } from "@material-ui/core";
-import { useState } from "react";
 import styled from "styled-components";
 import { allDistricts } from "../../../utils/constants";
 import BottomLogo from "../BottomLogo/BottomLogo";
 
-const SelectDistrict = () => {
+const SelectDistrict = ({
+  handleClick,
+  handleClose,
+  anchorEl,
+  district,
+  setDistrict,
+}) => {
   const DISTRICT_IMAGE = "/bg/01-05.png";
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [district, setDistrict] = useState("");
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <Container backgroundImg={DISTRICT_IMAGE}>
@@ -64,19 +59,19 @@ const Container = styled.div`
   ${({ backgroundImg }) => `background-image: url(${backgroundImg})`};
   background-position: center;
   background-size: contain;
-  /* background-repeat: no-repeat; */
   height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  /* background-repeat: no-repeat; */
   /* border: 2px black solid; */
+
   > main {
     width: 100%;
     display: flex;
     align-items: center;
-    /* justify-content: center; */
     flex-direction: column;
     flex: 1;
     padding-top: 30vh;

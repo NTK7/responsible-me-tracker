@@ -4,13 +4,11 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import { useState } from "react";
 import styled from "styled-components";
 import BottomLogo from "../BottomLogo/BottomLogo";
 
-const AgeGroup = () => {
+const AgeGroup = ({ age, setAge }) => {
   const AGE_GROUP = "/bg/01-04.png";
-  const [age, setAge] = useState(null);
 
   return (
     <Container backgroundImg={AGE_GROUP}>
@@ -70,16 +68,15 @@ const Container = styled.div`
   ${({ backgroundImg }) => `background-image: url(${backgroundImg})`};
   background-position: center;
   background-size: contain;
-  /* background-repeat: no-repeat; */
   height: 100vh;
-
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* border: 2px black solid; */
   overflow-x: hidden;
+  /* border: 2px black solid; */
+  /* background-repeat: no-repeat; */
 
   > main {
     width: 100%;

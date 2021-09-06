@@ -4,13 +4,11 @@ import {
   Radio,
   RadioGroup,
 } from "@material-ui/core";
-import { useState } from "react";
 import styled from "styled-components";
 import BottomLogo from "../BottomLogo/BottomLogo";
 
-const WorkPlan = () => {
+const WorkPlan = ({ workPlan, setWorkPlan }) => {
   const WORKPLAN = "/bg/01-02.png";
-  const [workPlan, setWorkPlan] = useState(null);
 
   return (
     <Container backgroundImg={WORKPLAN}>
@@ -55,15 +53,15 @@ const Container = styled.div`
   ${({ backgroundImg }) => `background-image: url(${backgroundImg})`};
   background-position: center;
   background-size: contain;
-  /* background-repeat: no-repeat; */
   height: 100vh;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* border: 2px black solid; */
   overflow-x: hidden;
+  /* background-repeat: no-repeat; */
+  /* border: 2px black solid; */
 
   > main {
     width: 100%;
