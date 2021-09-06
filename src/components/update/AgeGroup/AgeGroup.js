@@ -73,6 +73,7 @@ const Container = styled.div`
   /* background-repeat: no-repeat; */
   height: 100vh;
 
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;

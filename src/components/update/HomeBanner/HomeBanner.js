@@ -18,6 +18,7 @@ const Container = styled.div`
   place-items: center;
   align-items: center;
   height: 100vh;
+  scroll-snap-align: start;
   /* border: 2px orange solid; */
   > h1 {
     display: flex;

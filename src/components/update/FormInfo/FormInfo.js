@@ -18,6 +18,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+  scroll-snap-align: start;
   /* border: 2px black solid; */
   > main {
     width: 100%;

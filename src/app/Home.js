@@ -103,6 +103,7 @@ const App = () => {
 export default App;
 
 const Container = styled.div`
+  scroll-snap-type: mandatory; 
   /* padding: 2pc;
   > h2 {
     display: flex;

@@ -13,3 +13,6 @@ code {
   margin: 0;
   padding: 0;
 }
+html {
+	scroll-snap-type: y mandatory !important; /* snapping effect */
+}
