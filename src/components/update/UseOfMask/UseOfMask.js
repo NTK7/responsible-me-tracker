@@ -97,7 +97,7 @@ const Container = styled.div`
       border-radius: 5pc;
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     background-repeat: no-repeat;
     background-size: cover;
     > main {

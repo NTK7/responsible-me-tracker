@@ -104,7 +104,7 @@ const Container = styled.div`
       }
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 800px) {
     background-repeat: no-repeat;
     background-size: cover;
     > main {
