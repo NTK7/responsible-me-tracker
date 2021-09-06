@@ -34,35 +34,35 @@ function Result({
   const LUNGS = [
     {
       color: "#4DFF02",
-      image: "/Lungs/1.png",
+      image: "/lungs/1.png",
     },
     {
       color: "#AFFF02",
-      image: "/Lungs/2.png",
+      image: "/lungs/2.png",
     },
     {
       color: "#DAFF02",
-      image: "/Lungs/3.png",
+      image: "/lungs/3.png",
     },
     {
       color: "#FFE002",
-      image: "/Lungs/4.png",
+      image: "/lungs/4.png",
     },
     {
       color: "#FFC72C",
-      image: "/Lungs/5.png",
+      image: "/lungs/5.png",
     },
     {
       color: "#FF8B02",
-      image: "/Lungs/6.png",
+      image: "/lungs/6.png",
     },
     {
       color: "#FF5D02",
-      image: "/Lungs/7.png",
+      image: "/lungs/7.png",
     },
     {
       color: "#FF1A02",
-      image: "/Lungs/8.png",
+      image: "/lungs/8.png",
     },
   ];
 
