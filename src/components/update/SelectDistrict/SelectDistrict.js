@@ -1,9 +1,4 @@
-import {
-  Button,
-  FormControl,
-  Menu,
-  MenuItem,
-} from "@material-ui/core";
+import { Button, FormControl, Menu, MenuItem } from "@material-ui/core";
 import { useState } from "react";
 import styled from "styled-components";
 import { allDistricts } from "../../../utils/constants";
@@ -100,6 +95,24 @@ const Container = styled.div`
         border: 1px solid white;
         padding: 0.5pc 1pc;
         border-radius: 5pc;
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    > main {
+      > h1 {
+        font-size: 2rem;
+        color: white;
+        font-weight: bold;
+      }
+      .form-control {
+        > button {
+          border: 1px solid white;
+          padding: 0.2pc 1pc;
+          border-radius: 5pc;
+        }
       }
     }
   }

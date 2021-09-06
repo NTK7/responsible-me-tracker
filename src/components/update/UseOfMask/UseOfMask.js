@@ -97,4 +97,23 @@ const Container = styled.div`
       border-radius: 5pc;
     }
   }
+  @media screen and (max-width: 500px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    > main {
+      > h1 {
+        font-size: 1.5rem;
+        margin: 0 10vw;
+      }
+      .form-control {
+        margin: 5vw 10vw;
+      }
+      > button {
+        margin: 0 10vw;
+        margin-top: 0pc;
+        font-size: small;
+        padding: 0.3pc 1pc;
+      }
+    }
+  }
 `;

@@ -19,7 +19,7 @@ const Container = styled.div`
   width: fit-content;
   text-align: center;
   background-color: #fff;
-  padding: 0.7pc 1pc  0.5pc 1pc;
+  padding: 0.7pc 1pc 0.5pc 1pc;
   /* border: 1px solid red; */
   border-top-left-radius: 2pc;
   border-top-right-radius: 2pc;
@@ -31,5 +31,15 @@ const Container = styled.div`
   }
   > span {
     color: #e1383e;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: medium;
+    padding: 0.5pc 0.8pc 0.3pc 0.8pc;
+    border-top-left-radius: 1pc;
+    border-top-right-radius: 1pc;
+    > img {
+      height: 15px;
+    }
   }
 `;

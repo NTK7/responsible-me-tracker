@@ -104,4 +104,17 @@ const Container = styled.div`
       }
     }
   }
+  @media screen and (max-width: 500px) {
+    background-repeat: no-repeat;
+    background-size: cover;
+    > main {
+      > h1 {
+        font-size: 1.5rem;
+        margin: 0 10vw;
+      }
+      .form-control {
+        margin: 5vw 10vw;
+      }
+    }
+  }
 `;

@@ -30,4 +30,12 @@ const Container = styled.div`
     color: #474747;
     flex: 1;
   }
+
+  @media screen and (max-width: 800px) {
+    > main {
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 0.2pc;
+    }
+  }
 `;
