@@ -109,7 +109,15 @@ const App = () => {
         ) : processing ? (
           <Processing />
         ) : (
-          <Result percentage={totalWeight} age={age} />
+          <Result
+            percentage={totalWeight}
+            age={age}
+            vaccination={vaccination}
+            workPlan={workPlan}
+            publicVisiting={publicVisiting}
+            friendVisiting={friendVisiting}
+            useOfMask={useOfMask}
+          />
         )}
       </Container>
     </Fade>

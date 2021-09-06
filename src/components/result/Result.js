@@ -14,7 +14,17 @@ import {
   TelegramIcon,
   WhatsappIcon,
 } from "react-share";
-function Result({ percentage, age }) {
+import BottomLogo from "../update/BottomLogo/BottomLogo";
+
+function Result({
+  percentage,
+  age,
+  vaccination,
+  workPlan,
+  publicVisiting,
+  friendVisiting,
+  useOfMask,
+}) {
   const [bestResults, setBestResults] = useState(false);
   const history = useHistory();
   const BASE_URL = window.location.href;
@@ -35,7 +45,7 @@ function Result({ percentage, age }) {
   return (
     <Fade>
       <Container>
-        <h3>Your Result</h3>
+        <h1>YOUR RESULT</h1>
         <h4>HOW RESPONSIBLE ARE YOU?</h4>
         <GaugeChart
           className="gauge-chart"
@@ -46,7 +56,7 @@ function Result({ percentage, age }) {
         />
         <h4>
           You are only{" "}
-          <strong style={{ color: "red" }}>
+          <strong style={{ color: "#DC2529" }}>
             {Math.round(percentage * 10000) / 100}%
           </strong>{" "}
           Responsible
@@ -62,14 +72,24 @@ function Result({ percentage, age }) {
               <ul>
                 {!age.includes("1") && (
                   <>
-                    <li>Take the Vaccine</li>
-                    <li>Take the second dose</li>
+                    {vaccination === "not" && <li>Take the Vaccine</li>}
+                    {vaccination === "single" && <li>Take the second dose</li>}
                   </>
                 )}
-                <li> Work from home as much as possible</li>
-                <li>Avoid public places for next 2 weeks</li>
-                <li>Do not visit your friends & relatives for next 2 weeks</li>
-                <li>Always wear a mask outside home</li>
+                {workPlan !== "wft" && (
+                  <li>Work from home as much as possible</li>
+                )}
+                {publicVisiting === "sometimes" && (
+                  <li>Avoid public places for next 2 weeks</li>
+                )}
+                {friendVisiting === "sometimes" && (
+                  <li>
+                    Do not visit your friends & relatives for next 2 weeks
+                  </li>
+                )}
+                {useOfMask === "sometimes" && (
+                  <li>Always wear a mask outside home</li>
+                )}
               </ul>
             </div>
           ) : (
@@ -81,12 +101,14 @@ function Result({ percentage, age }) {
         <Button
           color="secondary"
           variant="outlined"
+          className="tryAgain__button"
           onClick={onHandleRefreshPage}>
           Try Again
         </Button>
         <Button
           color="secondary"
           variant="contained"
+          className="viewStats__button"
           onClick={() => history.push("/visualization")}>
           View Stats
         </Button>
@@ -119,6 +141,7 @@ function Result({ percentage, age }) {
             <TelegramIcon size={32} round />
           </TelegramShareButton>
         </div>
+        <BottomLogo />
       </Container>
     </Fade>
   );
@@ -141,7 +164,6 @@ const Container = styled.div`
     width: 40vw !important;
   }
   > h4,
-  > h3,
   > h2,
   > p {
     font-size: larger;
@@ -152,21 +174,33 @@ const Container = styled.div`
   }
   > h3 {
     font-size: x-large;
-    color: red;
+    color: #dc2529;
+  }
+  > h1,
+  > h2 {
+    color: #dc2529;
   }
   > section {
     margin: 2pc;
   }
   > button {
-    margin: .5pc;
-    width: 20%;
+    margin: 0.5pc;
+    width: 15%;
+    border-radius: 2pc;
     min-width: fit-content;
+  }
+  .tryAgain__button {
+    border: 1px solid #dc2529;
+    color: #dc2529;
+  }
+  .viewStats__button {
+    background-color: #dc2529;
   }
   .visualization {
     width: 100%;
   }
   .share__section {
-    margin: 0.5pc 0;
+    margin: 2pc 0;
     > p {
       font-size: small;
       color: grey;
