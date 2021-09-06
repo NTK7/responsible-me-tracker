@@ -26,7 +26,7 @@ const App = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [totalWeight, setTotalWeight] = useState(null);
-  const [displayResult, setDisplayResult] = useState(false);
+  const [displayResult, setDisplayResult] = useState(true);
   const [processing, setProcessing] = useState(false);
 
   const handleClick = (event) => {
