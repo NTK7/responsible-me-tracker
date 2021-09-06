@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   FormControlLabel,
   Radio,
@@ -39,6 +40,7 @@ const UseOfMask = () => {
             />
           </RadioGroup>
         </FormControl>
+        <Button>SUBMIT</Button>
       </main>
       <BottomLogo />
     </Container>
@@ -82,6 +84,17 @@ const Container = styled.div`
       .MuiIconButton-label {
         color: white !important;
       }
+    }
+    > button {
+      background-color: #dc2529;
+      margin: 0 25vw;
+      font-size: medium;
+      color: white;
+      margin-top: 2pc;
+      width: fit-content;
+      border: 1px solid white;
+      padding: 0.3pc 2pc;
+      border-radius: 5pc;
     }
   }
 `;

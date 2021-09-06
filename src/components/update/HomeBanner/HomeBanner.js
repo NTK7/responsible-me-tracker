@@ -19,7 +19,7 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   scroll-snap-align: start;
-  /* border: 2px orange solid; */
+  /* border: 1px solid red; */
   > h1 {
     display: flex;
     align-items: center;
@@ -34,6 +34,29 @@ const Container = styled.div`
     }
     > span {
       color: #e1383e;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    > h1 {
+      font-size: 2rem;
+      word-break: break-all;
+      text-align: center;
+      > img {
+        height: 50px;
+      }
+    }
+  }
+  @media screen and (max-width: 500px) {
+    > h1 {
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0;
+      word-wrap: break-word;
+      text-align: center;
+      > img {
+        height: 20px;
+      }
     }
   }
 `;
