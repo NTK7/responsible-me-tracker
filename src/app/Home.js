@@ -1,13 +1,3 @@
-import {
-  Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Menu,
-  Radio,
-  MenuItem,
-  RadioGroup,
-} from "@material-ui/core";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Processing from "../components/Processing/Processing";
@@ -15,7 +5,6 @@ import Result from "../components/Result/Result";
 import { db } from "../firebase";
 import { Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";
-import { allDistricts } from "../utils/constants";
 import HomeBanner from "../components/update/HomeBanner/HomeBanner";
 import FormInfo from "../components/update/FormInfo/FormInfo";
 import SelectDistrict from "../components/update/SelectDistrict/SelectDistrict";
@@ -34,11 +23,11 @@ const App = () => {
   const [publicVisiting, setPublicVisiting] = useState(null);
   const [friendVisiting, setFriendVisiting] = useState(null);
   const [useOfMask, setUseOfMask] = useState(null);
-  const [totalWeight, setTotalWeight] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
+  const [totalWeight, setTotalWeight] = useState(null);
   const [displayResult, setDisplayResult] = useState(false);
   const [processing, setProcessing] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,32 +79,38 @@ const App = () => {
   return (
     <Fade>
       <Container>
-        <form onSubmit={onHandleSubmit}>
-          <HomeBanner />
-          <FormInfo />
-          <SelectDistrict
-            handleClick={handleClick}
-            handleClose={handleClose}
-            anchorEl={anchorEl}
-            district={district}
-            setDistrict={setDistrict}
-          />
-          <AgeGroup age={age} setAge={setAge} />
-          <Vaccination
-            vaccination={vaccination}
-            setVaccination={setVaccination}
-          />
-          <WorkPlan workPlan={workPlan} setWorkPlan={setWorkPlan} />
-          <PublicVisiting
-            publicVisiting={publicVisiting}
-            setPublicVisiting={setPublicVisiting}
-          />
-          <FriendVisiting
-            friendVisiting={friendVisiting}
-            setFriendVisiting={setFriendVisiting}
-          />
-          <UseOfMask useOfMask={useOfMask} setUseOfMask={setUseOfMask} />
-        </form>
+        {!displayResult ? (
+          <form onSubmit={onHandleSubmit}>
+            <HomeBanner />
+            <FormInfo />
+            <SelectDistrict
+              handleClick={handleClick}
+              handleClose={handleClose}
+              anchorEl={anchorEl}
+              district={district}
+              setDistrict={setDistrict}
+            />
+            <AgeGroup age={age} setAge={setAge} />
+            <Vaccination
+              vaccination={vaccination}
+              setVaccination={setVaccination}
+            />
+            <WorkPlan workPlan={workPlan} setWorkPlan={setWorkPlan} />
+            <PublicVisiting
+              publicVisiting={publicVisiting}
+              setPublicVisiting={setPublicVisiting}
+            />
+            <FriendVisiting
+              friendVisiting={friendVisiting}
+              setFriendVisiting={setFriendVisiting}
+            />
+            <UseOfMask useOfMask={useOfMask} setUseOfMask={setUseOfMask} />
+          </form>
+        ) : processing ? (
+          <Processing />
+        ) : (
+          <Result percentage={totalWeight} age={age} />
+        )}
       </Container>
     </Fade>
   );
