@@ -17,6 +17,7 @@ import { Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";
 import { allDistricts } from "../utils/constants";
 import HomeBanner from "../components/update/HomeBanner/HomeBanner";
+import FormInfo from "../components/update/FormInfo/FormInfo";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -77,8 +78,9 @@ const App = () => {
   };
   return (
     <Fade>
-      <Container className="container">
+      <Container>
         <HomeBanner />
+        <FormInfo />
       </Container>
     </Fade>
   );

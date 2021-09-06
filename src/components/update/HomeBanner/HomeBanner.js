@@ -18,6 +18,7 @@ const Container = styled.div`
   place-items: center;
   align-items: center;
   height: 100vh;
+  /* border: 2px orange solid; */
   > h1 {
     display: flex;
     align-items: center;
@@ -25,7 +26,6 @@ const Container = styled.div`
     text-align: center;
     padding: 1pc;
     font-weight: bold;
-    border-radius: 1pc;
     font-size: 3rem;
     > img {
       object-fit: contain;
