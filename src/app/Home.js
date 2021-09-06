@@ -24,9 +24,8 @@ const App = () => {
   const [friendVisiting, setFriendVisiting] = useState(null);
   const [useOfMask, setUseOfMask] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
-
   const [totalWeight, setTotalWeight] = useState(null);
-  const [displayResult, setDisplayResult] = useState(true);
+  const [displayResult, setDisplayResult] = useState(false);
   const [processing, setProcessing] = useState(false);
 
   const handleClick = (event) => {

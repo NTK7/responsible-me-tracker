@@ -17,16 +17,14 @@ import {
 import BottomLogo from "../update/BottomLogo/BottomLogo";
 
 function Result({
-  // percentage,
-  // age,
+  percentage,
+  age,
   vaccination,
   workPlan,
   publicVisiting,
   friendVisiting,
   useOfMask,
 }) {
-  let age = "38";
-  let percentage = "0.738";
   const [bestResults, setBestResults] = useState(false);
   const history = useHistory();
   const BASE_URL = window.location.href;
