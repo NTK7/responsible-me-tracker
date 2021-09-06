@@ -16,6 +16,7 @@ import { db } from "../firebase";
 import { Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";
 import { allDistricts } from "../utils/constants";
+import HomeBanner from "../components/update/HomeBanner/HomeBanner";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -77,249 +78,7 @@ const App = () => {
   return (
     <Fade>
       <Container className="container">
-        <h2>
-          #RESPONSIBLE
-          <img src="/logos/logo.png" alt="" />
-          E-TRACKER
-        </h2>
-
-        {!displayResult ? (
-          <section>
-            <p>
-              <strong>Fill out the form below to get your score!</strong>
-            </p>
-            <form onSubmit={onHandleSubmit}>
-              {/* District */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend"> District </FormLabel>
-                <Button
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  color="secondary"
-                  variant="contained"
-                  style={{ width: "fit-content", margin: "0" }}
-                  onClick={handleClick}>
-                  {district ? district : "Select District"}
-                </Button>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}>
-                  {allDistricts.map((district, key) => (
-                    <MenuItem
-                      key={key}
-                      onClick={() => {
-                        handleClose();
-                        setDistrict(district);
-                      }}>
-                      {district}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </FormControl>
-              {/* age group */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend">Age Group</FormLabel>
-                <RadioGroup
-                  aria-label="ageGroup"
-                  name="ageGroup"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  required>
-                  <FormControlLabel
-                    value="0-17"
-                    control={<Radio required={true} />}
-                    label="Below 18"
-                  />
-                  <FormControlLabel
-                    value="19-29"
-                    control={<Radio required={true} />}
-                    label="19-29"
-                  />
-                  <FormControlLabel
-                    value="30-39"
-                    control={<Radio required={true} />}
-                    label="30-39"
-                  />
-                  <FormControlLabel
-                    value="40-49"
-                    control={<Radio required={true} />}
-                    label="40-49"
-                  />
-                  <FormControlLabel
-                    value="50-59"
-                    control={<Radio required={true} />}
-                    label="50-59"
-                  />
-                  <FormControlLabel
-                    value="60+"
-                    control={<Radio required={true} />}
-                    label="60+"
-                  />
-                </RadioGroup>
-              </FormControl>
-
-              {/* Vaccination */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend">Vaccination</FormLabel>
-                <RadioGroup
-                  aria-label="vaccination"
-                  name="vaccination"
-                  value={vaccination}
-                  onChange={(e) => setVaccination(e.target.value)}
-                  required>
-                  <FormControlLabel
-                    value="single"
-                    control={<Radio required={true} />}
-                    label="Single Dose"
-                  />
-                  <FormControlLabel
-                    value="fully"
-                    control={<Radio required={true} />}
-                    label="Fully Vaccinated"
-                  />
-                  <FormControlLabel
-                    value="not"
-                    control={<Radio required={true} />}
-                    label="Not Vaccinated"
-                  />
-                </RadioGroup>
-              </FormControl>
-
-              {/* workPlan */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend">
-                  Work plan for next 2 weeks
-                </FormLabel>
-                <RadioGroup
-                  aria-label="workPlan"
-                  name="workPlan"
-                  value={workPlan}
-                  onChange={(e) => setWorkPlan(e.target.value)}
-                  required>
-                  <FormControlLabel
-                    value="wft"
-                    control={<Radio required={true} />}
-                    label="Work from home"
-                  />
-                  <FormControlLabel
-                    value="visiting"
-                    control={<Radio required={true} />}
-                    label="Visiting to office"
-                  />
-                  <FormControlLabel
-                    value="both"
-                    control={<Radio required={true} />}
-                    label="Both"
-                  />
-                </RadioGroup>
-              </FormControl>
-
-              {/* publicVisiting */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend">
-                  Visiting to public places including shops
-                </FormLabel>
-                <RadioGroup
-                  aria-label="publicVisiting"
-                  name="publicVisiting"
-                  value={publicVisiting}
-                  onChange={(e) => setPublicVisiting(e.target.value)}
-                  required>
-                  <FormControlLabel
-                    value="avoided"
-                    control={<Radio required={true} />}
-                    label="Avoided"
-                  />
-                  <FormControlLabel
-                    value="sometimes"
-                    control={<Radio required={true} />}
-                    label="Sometimes"
-                  />
-                </RadioGroup>
-              </FormControl>
-
-              {/* friendVisiting */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend">
-                  Visiting friends / relatives during next 2 weeks
-                </FormLabel>
-                <RadioGroup
-                  aria-label="friendVisiting"
-                  name="friendVisiting"
-                  value={friendVisiting}
-                  onChange={(e) => setFriendVisiting(e.target.value)}
-                  required>
-                  <FormControlLabel
-                    value="avoided"
-                    control={<Radio required={true} />}
-                    label="Avoided"
-                  />
-                  <FormControlLabel
-                    value="sometimes"
-                    control={<Radio required={true} />}
-                    label="Sometimes"
-                  />
-                </RadioGroup>
-              </FormControl>
-
-              {/* useOfMask */}
-              <FormControl
-                color="secondary"
-                component="fieldset"
-                className="form-control">
-                <FormLabel component="legend">
-                  Wearing Mask out side home
-                </FormLabel>
-                <RadioGroup
-                  aria-label="useOfMask"
-                  name="useOfMask"
-                  value={useOfMask}
-                  onChange={(e) => setUseOfMask(e.target.value)}
-                  required>
-                  <FormControlLabel
-                    value="always"
-                    control={<Radio required={true} />}
-                    label="Always"
-                  />
-                  <FormControlLabel
-                    value="sometimes"
-                    control={<Radio required={true} />}
-                    label="Sometimes"
-                  />
-                </RadioGroup>
-              </FormControl>
-
-              <Button variant="contained" color="secondary" type="submit">
-                Submit
-              </Button>
-            </form>
-          </section>
-        ) : processing ? (
-          <Processing />
-        ) : (
-          <Result percentage={totalWeight} age={age} />
-        )}
+        <HomeBanner />
       </Container>
     </Fade>
   );
@@ -328,8 +87,7 @@ const App = () => {
 export default App;
 
 const Container = styled.div`
-  padding: 2pc;
-  /* border: 1px solid red; */
+  /* padding: 2pc;
   > h2 {
     display: flex;
     align-items: center;
@@ -352,18 +110,13 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     background-color: whitesmoke;
-    /* border: 1px red solid; */
     > p {
       text-align: center;
       color: grey;
       padding: 0 2pc;
     }
-    /* input {
-        background-color: #fff2f2;
-      } */
     > form {
       width: 40vw;
-      /* border: 1px blue solid; */
       display: flex;
       flex-direction: column;
       legend {
@@ -413,5 +166,5 @@ const Container = styled.div`
         width: 80vw;
       }
     }
-  }
+  } */
 `;
