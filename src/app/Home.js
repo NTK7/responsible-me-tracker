@@ -18,6 +18,7 @@ import { WEIGHTS } from "../utils/conversions";
 import { allDistricts } from "../utils/constants";
 import HomeBanner from "../components/update/HomeBanner/HomeBanner";
 import FormInfo from "../components/update/FormInfo/FormInfo";
+import SelectDistrict from "../components/update/SelectDistrict/SelectDistrict";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -81,6 +82,7 @@ const App = () => {
       <Container>
         <HomeBanner />
         <FormInfo />
+        <SelectDistrict />
       </Container>
     </Fade>
   );

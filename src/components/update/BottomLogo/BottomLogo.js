@@ -13,11 +13,13 @@ export default BottomLogo;
 
 const Container = styled.div`
   display: flex;
-  border: 2px blue solid;
+  border: 2px white solid;
   align-items: center;
   justify-content: center;
+  width: fit-content;
   text-align: center;
-  padding: 0.8pc 2pc;
+  background-color: #fff;
+  padding: 0.7pc 1pc  0.5pc 1pc;
   /* border: 1px solid red; */
   border-top-left-radius: 2pc;
   border-top-right-radius: 2pc;
