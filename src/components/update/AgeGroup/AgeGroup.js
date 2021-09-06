@@ -88,7 +88,7 @@ const Container = styled.div`
     padding-top: 10vh;
 
     > h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: white;
       font-weight: bold;
       margin: 0 25vw;

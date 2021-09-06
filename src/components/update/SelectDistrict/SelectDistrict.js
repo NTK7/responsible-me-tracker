@@ -96,7 +96,7 @@ const Container = styled.div`
       background-color: #dc2529;
       > button {
         background-color: #dc2529;
-        font-size: large;
+        font-size: medium;
         border: 1px solid white;
         padding: 0.5pc 1pc;
         border-radius: 5pc;
