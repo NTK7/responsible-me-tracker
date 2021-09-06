@@ -19,6 +19,12 @@ import { allDistricts } from "../utils/constants";
 import HomeBanner from "../components/update/HomeBanner/HomeBanner";
 import FormInfo from "../components/update/FormInfo/FormInfo";
 import SelectDistrict from "../components/update/SelectDistrict/SelectDistrict";
+import AgeGroup from "../components/update/AgeGroup/AgeGroup";
+import Vaccination from "../components/update/Vaccination/Vaccination";
+import WorkPlan from "../components/update/WorkPlan/WorkPlan";
+import PublicVisiting from "../components/update/PublicVisiting/PublicVisiting";
+import FriendVisiting from "../components/update/FriendVisiting/FriendVisiting";
+import UseOfMask from "../components/update/UseOfMask/UseOfMask";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -83,6 +89,12 @@ const App = () => {
         <HomeBanner />
         <FormInfo />
         <SelectDistrict />
+        <AgeGroup />
+        <Vaccination />
+        <WorkPlan />
+        <PublicVisiting />
+        <FriendVisiting />
+        <UseOfMask />
       </Container>
     </Fade>
   );
