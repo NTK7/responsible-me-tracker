@@ -32,7 +32,7 @@ const Visualization = () => {
     publicResult(null, true);
     workPlanResult(null, true);
     vaccinationsResult(null, true);
-  }
+  };
 
   const fetchData = async () => {
     setLoading(true);
@@ -122,20 +122,15 @@ const Visualization = () => {
 export default Visualization;
 
 const Container = styled.div`
-  /* border: 1px red solid; */
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-  margin: 4pc 2pc;
+  margin: 2pc;
   > h1 {
     padding: 1pc;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.8rem;
     text-align: center;
-    margin-top: 2pc;
-    background-color: #fff2f2;
+    color: white;
+    background-color: #de3538;
   }
   > main {
     > div {
@@ -162,7 +157,6 @@ const Container = styled.div`
     margin: 3pc 0pc;
     > h1 {
       font-size: 1.5rem;
-      border-radius: 1pc;
     }
   }
   @media screen and (max-width: 500px) {

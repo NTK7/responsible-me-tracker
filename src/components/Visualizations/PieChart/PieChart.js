@@ -9,20 +9,20 @@ const PieChart = ({ title, labels, data_ }) => {
         label: "# of Votes",
         data: data_,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
+          "rgba(65, 152, 215, 0.4)",
+          "rgba(216, 182, 85, 0.4)",
+          "rgba(122, 97, 186, 0.4)",
+          "rgba(75, 192, 192, 0.4)",
+          "rgba(70, 211, 154, 0.4)",
+          "rgba(229, 87, 89, 0.4)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
+          "rgba(65, 152, 215, 1)",
+          "rgba(216, 182, 85, 1)",
+          "rgba(122, 97, 186, 1)",
           "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
+          "rgba(70, 211, 154, 1)",
+          "rgba(229, 87, 89, 1)",
         ],
         borderWidth: 1,
       },
@@ -40,14 +40,15 @@ const PieChart = ({ title, labels, data_ }) => {
 export default PieChart;
 
 const Container = styled.div`
-  width: 20vw;
-  margin: 1pc;
+  width: 25vw;
+  margin: 2pc 0;
+
   p {
     text-align: center;
     margin: 1pc;
     font-size: large;
     font-weight: bold;
-    color: grey;
+    color: black;
   }
   @media screen and (max-width: 1000px) {
     width: 300px;

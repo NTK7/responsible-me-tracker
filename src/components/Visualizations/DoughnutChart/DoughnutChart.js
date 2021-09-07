@@ -10,16 +10,16 @@ const DoughnutChart = ({ title, labels, data_ }) => {
         label: "# of Votes",
         data: data_,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
+          "rgba(11, 132, 165, 0.4)",
+          "rgba(222, 53, 56, 0.4)",
+          "rgba(255, 206, 86, 0.4)",
+          "rgba(75, 192, 192, 0.4)",
+          "rgba(153, 102, 255, 0.4)",
+          "rgba(255, 159, 64, 0.4)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
+          "rgba(11, 132, 165, 1)",
+          "rgba(222, 53, 56, 1)",
           "rgba(255, 206, 86, 1)",
           "rgba(75, 192, 192, 1)",
           "rgba(153, 102, 255, 1)",
@@ -40,12 +40,12 @@ const DoughnutChart = ({ title, labels, data_ }) => {
 export default DoughnutChart;
 
 const Container = styled.div`
-  margin: 1pc;
-  width: 20vw;
+  margin: 2pc 0;
+  width: 25vw;
   p {
     text-align: center;
     margin: 1pc;
-    color: grey;
+    color: #de3538;
     font-size: large;
     font-weight: bold;
   }
