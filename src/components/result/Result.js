@@ -15,7 +15,6 @@ import {
   WhatsappIcon,
 } from "react-share";
 import BottomLogo from "../update/BottomLogo/BottomLogo";
-import { LUNGS } from "../../utils/constants";
 import { returnLungImagePath } from "../../utils/functions";
 
 function Result({
@@ -68,10 +67,34 @@ function Result({
                 Please make sure you follow the below instructions below.
               </p>
               <ul>
-                {!age.includes("1") && (
+                {!age.includes("18") && (
                   <>
-                    {vaccination === "not" && <li>Take the Vaccine</li>}
-                    {vaccination === "single" && <li>Take the second dose</li>}
+                    {vaccination === "not" && (
+                      <>
+                        <li>Take the Vaccine</li>
+                        <div className="icon__image">
+                          <img
+                            src="/icons/vaccine.jpeg"
+                            alt=""
+                            height="60"
+                            width="60"
+                          />
+                        </div>
+                      </>
+                    )}
+                    {vaccination === "single" && (
+                      <>
+                        <li>Take the second dose</li>
+                        <div className="icon__image">
+                          <img
+                            src="/icons/vaccine.jpeg"
+                            alt=""
+                            height="60"
+                            width="60"
+                          />
+                        </div>
+                      </>
+                    )}
                   </>
                 )}
                 {workPlan !== "wft" && (
