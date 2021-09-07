@@ -15,6 +15,8 @@ import {
   WhatsappIcon,
 } from "react-share";
 import BottomLogo from "../update/BottomLogo/BottomLogo";
+import { LUNGS } from "../../utils/constants";
+import { returnLungImagePath } from "../../utils/functions";
 
 function Result({
   percentage,
@@ -31,40 +33,6 @@ function Result({
   const content = `I have scored ${
     Math.round(percentage * 10000) / 100
   }% from the Responsible Me Tracker, click the link and find yours too!`;
-  const LUNGS = [
-    {
-      color: "#4DFF02",
-      image: "/lungs/1.png",
-    },
-    {
-      color: "#AFFF02",
-      image: "/lungs/2.png",
-    },
-    {
-      color: "#DAFF02",
-      image: "/lungs/3.png",
-    },
-    {
-      color: "#FFE002",
-      image: "/lungs/4.png",
-    },
-    {
-      color: "#FFC72C",
-      image: "/lungs/5.png",
-    },
-    {
-      color: "#FF8B02",
-      image: "/lungs/6.png",
-    },
-    {
-      color: "#FF5D02",
-      image: "/lungs/7.png",
-    },
-    {
-      color: "#FF1A02",
-      image: "/lungs/8.png",
-    },
-  ];
 
   useEffect(() => {
     console.log(percentage);
@@ -74,30 +42,6 @@ function Result({
   const onHandleRefreshPage = () => {
     window.scrollTo(0, 0);
     window.location.href = "/";
-  };
-
-  const returnLungImagePath = (percentage) => {
-    let actualPercentage = percentage * 100;
-    switch (true) {
-      case actualPercentage >= 0 && actualPercentage <= 15:
-        return LUNGS[0];
-      case actualPercentage > 15 && actualPercentage <= 25:
-        return LUNGS[1];
-      case actualPercentage > 25 && actualPercentage <= 35:
-        return LUNGS[2];
-      case actualPercentage > 35 && actualPercentage <= 45:
-        return LUNGS[3];
-      case actualPercentage > 45 && actualPercentage <= 55:
-        return LUNGS[4];
-      case actualPercentage > 55 && actualPercentage <= 65:
-        return LUNGS[5];
-      case actualPercentage > 65 && actualPercentage <= 80:
-        return LUNGS[6];
-      case actualPercentage > 80 && actualPercentage <= 100:
-        return LUNGS[7];
-      default:
-        return LUNGS[0];
-    }
   };
 
   return (
@@ -131,18 +75,53 @@ function Result({
                   </>
                 )}
                 {workPlan !== "wft" && (
-                  <li>Work from home as much as possible</li>
+                  <>
+                    <li>Work from home as much as possible</li>
+                    <div className="icon__image">
+                      <img src="/icons/wfh.png" alt="" height="60" width="60" />
+                    </div>
+                  </>
                 )}
                 {publicVisiting === "sometimes" && (
-                  <li>Avoid public places for next 2 weeks</li>
+                  <>
+                    <li>Avoid public places for next 2 weeks</li>
+                    <div className="icon__image">
+                      <img
+                        src="/icons/public.png"
+                        alt=""
+                        height="60"
+                        width="60"
+                      />
+                    </div>
+                  </>
                 )}
                 {friendVisiting === "sometimes" && (
-                  <li>
-                    Do not visit your friends & relatives for next 2 weeks
-                  </li>
+                  <>
+                    <li>
+                      Do not visit your friends & relatives for next 2 weeks
+                    </li>
+                    <div className="icon__image">
+                      <img
+                        src="/icons/friends.png"
+                        alt=""
+                        height="60"
+                        width="60"
+                      />
+                    </div>
+                  </>
                 )}
                 {useOfMask === "sometimes" && (
-                  <li>Always wear a mask outside home</li>
+                  <>
+                    <li>Always wear a mask outside home</li>
+                    <div className="icon__image">
+                      <img
+                        src="/icons/mask.png"
+                        alt=""
+                        height="60"
+                        width="60"
+                      />
+                    </div>
+                  </>
                 )}
               </ul>
             </div>
@@ -305,7 +284,12 @@ const Container = styled.div`
         font-size: medium;
       }
     }
-
+    .icon__image {
+      /* border: 1px solid red; */
+      > img {
+        margin-left: 30vw;
+      }
+    }
     margin: 1pc;
     > h4,
     > h3,

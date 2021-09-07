@@ -25,7 +25,7 @@ const App = () => {
   const [useOfMask, setUseOfMask] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const [totalWeight, setTotalWeight] = useState(null);
-  const [displayResult, setDisplayResult] = useState(false);
+  const [displayResult, setDisplayResult] = useState(true);
   const [processing, setProcessing] = useState(false);
 
   const handleClick = (event) => {
@@ -109,13 +109,15 @@ const App = () => {
           <Processing />
         ) : (
           <Result
-            percentage={totalWeight}
-            age={age}
-            vaccination={vaccination}
-            workPlan={workPlan}
-            publicVisiting={publicVisiting}
-            friendVisiting={friendVisiting}
-            useOfMask={useOfMask}
+            // percentage={totalWeight}
+            // age={age}
+            percentage="0.986"
+            age={"20"}
+            vaccination={"not"}
+            workPlan={"single"}
+            publicVisiting={"sometimes"}
+            friendVisiting={"sometimes"}
+            useOfMask={"sometimes"}
           />
         )}
       </Container>
