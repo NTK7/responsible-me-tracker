@@ -17,15 +17,17 @@ const DailyCount = ({ dbData }) => {
     tempLabel.push(startDate);
     let dataCoutner = 0;
 
-    await dbData.forEach((record) => {
+    await dbData.forEach((record, index) => {
       let date_ = record.timestamp.toDate().toLocaleDateString();
-      if (date_ === startDate) {
+      if (date_ === startDate && index !== dbData.length - 1) {
         dataCoutner++;
       } else {
-        tempLabel.push(date_);
+        {
+          index !== dbData.length - 1 && tempLabel.push(date_);
+        }
         tempData.push(dataCoutner);
-        dataCoutner = 0;
-        startDate = date_;
+        dataCoutner = 2;
+        startDate = record.timestamp.toDate().toLocaleDateString();
       }
     });
 
@@ -33,12 +35,17 @@ const DailyCount = ({ dbData }) => {
     setGraphData(tempData);
   };
 
+  useEffect(() => {
+    console.log(graphLabel);
+    console.log(graphData);
+  }, [graphData]);
+
   const data = {
-    labels: ["Sep 14th", "Sep 14th"],
+    labels: graphLabel,
     datasets: [
       {
         label: "# No. of responsible 100%",
-        data: [12, 5],
+        data: graphData,
         fill: true,
         backgroundColor: "rgba(204, 16, 52, 0.5)",
         borderColor: "#CC1034",
