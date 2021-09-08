@@ -38,10 +38,10 @@ function Result({
     percentage === 1 && setBestResults(true);
   }, [percentage]);
 
-  const onHandleRefreshPage = () => {
-    window.scrollTo(0, 0);
-    window.location.href = "/";
-  };
+  // const onHandleRefreshPage = () => {
+  //   window.scrollTo(0, 0);
+  //   window.location.href = "/";
+  // };
 
   return (
     <Fade>
@@ -105,7 +105,7 @@ function Result({
                     </div>
                   </>
                 )}
-                {publicVisiting === "sometimes" && (
+                {publicVisiting !== "avoided" && (
                   <>
                     <li>Avoid public places for next 2 weeks</li>
                     <div className="icon__image">
@@ -118,7 +118,7 @@ function Result({
                     </div>
                   </>
                 )}
-                {friendVisiting === "sometimes" && (
+                {friendVisiting !== "avoided" && (
                   <>
                     <li>
                       Do not visit your friends & relatives for next 2 weeks
@@ -133,7 +133,7 @@ function Result({
                     </div>
                   </>
                 )}
-                {useOfMask === "sometimes" && (
+                {useOfMask !== "always" && (
                   <>
                     <li>Always wear a mask outside home</li>
                     <div className="icon__image">
@@ -154,13 +154,13 @@ function Result({
         </section>
 
         <h2>THERE WON’T BE ANOTHER CHANCE TO REMIND YOU!</h2>
-        <Button
+        {/* <Button
           color="secondary"
           variant="outlined"
           className="tryAgain__button"
           onClick={onHandleRefreshPage}>
           Try Again
-        </Button>
+        </Button> */}
         <Button
           color="secondary"
           variant="contained"

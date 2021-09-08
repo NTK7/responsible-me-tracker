@@ -34,6 +34,11 @@ const PublicVisiting = ({ publicVisiting, setPublicVisiting }) => {
               control={<Radio required={true} />}
               label="Sometimes"
             />
+            <FormControlLabel
+              value="always"
+              control={<Radio required={true} />}
+              label="Always"
+            />
           </RadioGroup>
         </FormControl>
       </main>

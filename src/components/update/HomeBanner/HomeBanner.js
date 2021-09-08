@@ -10,6 +10,7 @@ const HomeBanner = () => {
         </span>{" "}
         <span>-TRACKER</span>
       </h1>
+      <p>Scroll down to get started</p>
     </Container>
   );
 };
@@ -17,12 +18,16 @@ const HomeBanner = () => {
 export default HomeBanner;
 
 const Container = styled.div`
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   scroll-snap-align: start;
   /* border: 1px solid red; */
+  > p {
+    display: none;
+  }
   > h1 {
     font-weight: bold;
     font-size: 3rem;
@@ -50,6 +55,9 @@ const Container = styled.div`
           }
         }
       }
+    }
+    > p {
+      display: block;
     }
   }
   @media screen and (max-width: 500px) {

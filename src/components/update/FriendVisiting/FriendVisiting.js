@@ -34,6 +34,11 @@ const FriendVisiting = ({ friendVisiting, setFriendVisiting }) => {
               control={<Radio required={true} />}
               label="Sometimes"
             />
+             <FormControlLabel
+              value="always"
+              control={<Radio required={true} />}
+              label="Always"
+            />
           </RadioGroup>
         </FormControl>
       </main>

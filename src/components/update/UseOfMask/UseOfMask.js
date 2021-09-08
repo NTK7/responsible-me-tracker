@@ -36,6 +36,11 @@ const UseOfMask = ({ useOfMask, setUseOfMask }) => {
               control={<Radio required={true} />}
               label="Sometimes"
             />
+            <FormControlLabel
+              value="dontcare"
+              control={<Radio required={true} />}
+              label="I don't care"
+            />
           </RadioGroup>
         </FormControl>
         <Button type="submit">SUBMIT</Button>
