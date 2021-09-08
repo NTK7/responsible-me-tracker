@@ -14,6 +14,7 @@ import WorkPlan from "../components/update/WorkPlan/WorkPlan";
 import PublicVisiting from "../components/update/PublicVisiting/PublicVisiting";
 import FriendVisiting from "../components/update/FriendVisiting/FriendVisiting";
 import UseOfMask from "../components/update/UseOfMask/UseOfMask";
+import firebase from "firebase";
 
 const App = () => {
   const [age, setAge] = useState(null);
@@ -64,6 +65,7 @@ const App = () => {
         useOfMask: useOfMask,
         totalWeight: totalWeight_,
         percentage: Math.round(totalWeight_ * 10000) / 100,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then((res) => {
         setProcessing(false);
