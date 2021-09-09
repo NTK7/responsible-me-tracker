@@ -41,6 +41,10 @@ const Visualization = () => {
         ) : (
           <main>
             <section>
+              <p className="mobileView_text">
+                Please view on a desktop for a clear view with the district bar
+                graph.
+              </p>
               <DailyCount dbData={data} />
               <CumulativeCount dbData={data} />
               <AgeComposition dbData={data} />
@@ -57,8 +61,7 @@ export default Visualization;
 
 const Container = styled.div`
   padding: 2pc;
-  /* scroll-snap-align: start; */
-  background-color: #212121;
+  background-color: #1c1c1c;
   color: white;
   > h1 {
     padding: 1pc;
@@ -69,42 +72,31 @@ const Container = styled.div`
     color: white;
     background-color: #de3538;
   }
-  /* > main {
-    > div {
-      padding: 2pc;
-      > p,
-      > h4 {
-        line-height: 1.5pc;
-        text-align: center;
-        font-size: larger;
-      }
-      > h4 {
-        font-size: 2rem;
-        font-weight: bold;
-        color: red;
-      }
-    }
-    > section {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      height: 50vh;
-    }
-  } */
+
+  .mobileView_text {
+    display: none;
+    text-align: center;
+    margin: 2pc 0.5pc 0 0.5pc;
+    font-size: small !important;
+  }
+
   @media screen and (max-width: 1000px) {
-    margin: 3pc 0pc;
     > h1 {
       font-size: 1.5rem;
+      margin: -1pc;
     }
   }
   @media screen and (max-width: 500px) {
-    margin: 1pc 0pc;
     p {
       line-height: 1pc;
       font-size: large;
     }
     > h1 {
-      font-size: large;
+      background-color: transparent;
+      color: #de3538;
+    }
+    .mobileView_text {
+      display: block;
     }
   }
 `;

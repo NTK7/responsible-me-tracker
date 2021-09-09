@@ -68,9 +68,10 @@ const AgeComposition = ({ dbData }) => {
       {
         label: "Age Composition",
         data: data_,
-        backgroundColor: "rgba(221, 0, 4, 0.8)",
+        backgroundColor: "rgba(221, 0, 4, 0.6)",
         borderColor: "#CC1034",
         borderWidth: 2,
+        hoverBorderWidth: 5,
       },
     ],
   };
@@ -117,4 +118,11 @@ const Container = styled.div`
   margin: 5pc 0;
   color: white;
   width: 100%;
+
+  @media screen and (max-width: 500px) {
+    margin: 3pc 0pc !important;
+    p {
+      font-size: small !important;
+    }
+  }
 `;

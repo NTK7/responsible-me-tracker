@@ -50,7 +50,7 @@ const DailyCount = ({ dbData }) => {
         label: "100% responsible citizen",
         data: graphData,
         fill: true,
-        backgroundColor: "rgba(221, 0, 4, 0.8)",
+        backgroundColor: "rgba(221, 0, 4, 0.6)",
         borderColor: "#CC1034",
       },
     ],
@@ -62,7 +62,8 @@ const DailyCount = ({ dbData }) => {
     },
     elements: {
       point: {
-        radius: 0,
+        pointRadius: 5,
+        pointHoverRadius: 5,
       },
     },
     maintainAspectRatio: false,
@@ -93,7 +94,7 @@ const DailyCount = ({ dbData }) => {
   return (
     <Container>
       <p>Daily Count of 100% responsible citizen</p>
-      <Line data={data} options={options} />
+      <Line data={data} options={options} className="graph" />
     </Container>
   );
 };
@@ -101,10 +102,17 @@ const DailyCount = ({ dbData }) => {
 export default DailyCount;
 
 const Container = styled.div`
-  /* scroll-snap-align: start; */
-  /* border: 1px red solid; */
   margin: 5pc 0;
   color: white;
   height: 50vh;
   width: 100%;
+
+  @media screen and (max-width: 500px) {
+    margin: 3pc 0pc !important;
+    height: 200px;
+
+    p {
+      font-size: small !important;
+    }
+  }
 `;

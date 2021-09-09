@@ -51,7 +51,7 @@ const CumulativeCount = ({ dbData }) => {
         label: "100% responsible citizen",
         data: graphData,
         fill: true,
-        backgroundColor: "rgb(62, 214, 37, 0.8)",
+        backgroundColor: "rgb(62, 214, 37,0.6)",
         borderColor: "#26cc10",
       },
     ],
@@ -63,7 +63,8 @@ const CumulativeCount = ({ dbData }) => {
     },
     elements: {
       point: {
-        radius: 0,
+        pointRadius: 5,
+        pointHoverRadius: 5,
       },
     },
     maintainAspectRatio: false,
@@ -106,4 +107,13 @@ const Container = styled.div`
   color: white;
   height: 50vh;
   width: 100%;
+
+  @media screen and (max-width: 500px) {
+    margin: 3pc 0pc !important;
+    height: 200px;
+
+    p {
+      font-size: small !important;
+    }
+  }
 `;

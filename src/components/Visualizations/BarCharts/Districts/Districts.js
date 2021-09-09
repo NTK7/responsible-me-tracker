@@ -162,9 +162,10 @@ const Districts = ({ dbData }) => {
       {
         label: "District Counts",
         data: data_,
-        backgroundColor: "rgb(13, 91, 225, 0.8)",
+        backgroundColor: "rgb(13, 91, 225, 0.6)",
         borderColor: "#3556dd",
         borderWidth: 2,
+        hoverBorderWidth: 3,
       },
     ],
   };
@@ -211,4 +212,12 @@ const Container = styled.div`
   margin: 5pc 0;
   color: white;
   width: 100%;
+
+  @media screen and (max-width: 500px) {
+    display: none;
+    /* margin: 3pc 0pc !important;
+    p {
+      font-size: small !important;
+    } */
+  }
 `;

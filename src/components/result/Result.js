@@ -149,7 +149,7 @@ function Result({
               </ul>
             </div>
           ) : (
-            <h3>Great job, continue the best practices!</h3>
+            <h3 style={{textAlign: 'center'}}>Great job, continue the best practices!</h3>
           )}
         </section>
 
@@ -240,6 +240,7 @@ const Container = styled.div`
   }
   > h3 {
     font-size: x-large;
+    text-align: center;
     color: #dc2529;
   }
   > h1,
@@ -319,6 +320,7 @@ const Container = styled.div`
     > h2,
     > p {
       font-size: medium;
+      text-align: center;
       font-weight: bold;
       margin: 0.8pc;
     }
