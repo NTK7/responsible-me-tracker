@@ -48,7 +48,7 @@ const CumulativeCount = ({ dbData }) => {
     labels: graphLabel,
     datasets: [
       {
-        label: "Cumulative Count of 100% responsible citizen",
+        label: "100% responsible citizen",
         data: graphData,
         fill: true,
         backgroundColor: "rgb(132, 214, 122)",
@@ -79,7 +79,7 @@ const CumulativeCount = ({ dbData }) => {
       ],
       yAxes: [
         {
-          ticks: {
+         ticks: {
             beginAtZero: true,
           },
         },
@@ -88,6 +88,7 @@ const CumulativeCount = ({ dbData }) => {
   };
   return (
     <Container>
+      <p>Cumulative Count of 100% responsible citizen</p>
       <Line data={data} options={options} />
     </Container>
   );
@@ -96,8 +97,7 @@ const CumulativeCount = ({ dbData }) => {
 export default CumulativeCount;
 
 const Container = styled.div`
-  scroll-snap-align: start;
-  /* border: 1px red solid; */
-  width: 100%;
+  margin: 3pc 0;
   height: 50vh;
+  width: 100%;
 `;

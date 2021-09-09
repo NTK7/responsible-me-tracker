@@ -47,7 +47,7 @@ const DailyCount = ({ dbData }) => {
     labels: graphLabel,
     datasets: [
       {
-        label: "Daily Count of 100% responsible citizen",
+        label: "100% responsible citizen",
         data: graphData,
         fill: true,
         backgroundColor: "rgba(204, 16, 52, 0.5)",
@@ -87,6 +87,7 @@ const DailyCount = ({ dbData }) => {
   };
   return (
     <Container>
+      <p>Daily Count of 100% responsible citizen</p>
       <Line data={data} options={options} />
     </Container>
   );
@@ -95,8 +96,9 @@ const DailyCount = ({ dbData }) => {
 export default DailyCount;
 
 const Container = styled.div`
-  scroll-snap-align: start;
+  /* scroll-snap-align: start; */
   /* border: 1px red solid; */
+  margin: 3pc 0;
   height: 50vh;
   width: 100%;
 `;
