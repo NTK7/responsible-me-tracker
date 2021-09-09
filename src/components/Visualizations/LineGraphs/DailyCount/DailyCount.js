@@ -22,10 +22,8 @@ const DailyCount = ({ dbData }) => {
 
   useEffect(() => {
     if (dbData.length !== 0) {
-      console.log(dates);
       const uniqueDates = dates.filter((v, i, a) => a.indexOf(v) === i);
       getCountOfEachDate(uniqueDates);
-      console.log(uniqueDates);
     }
   }, [dates]);
 
@@ -49,7 +47,7 @@ const DailyCount = ({ dbData }) => {
     labels: graphLabel,
     datasets: [
       {
-        label: "# No. of responsible 100%",
+        label: "Daily Count of 100% responsible citizen",
         data: graphData,
         fill: true,
         backgroundColor: "rgba(204, 16, 52, 0.5)",
@@ -99,5 +97,6 @@ export default DailyCount;
 const Container = styled.div`
   scroll-snap-align: start;
   /* border: 1px red solid; */
+  height: 50vh;
   width: 100%;
 `;

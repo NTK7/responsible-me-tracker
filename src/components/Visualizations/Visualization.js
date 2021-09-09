@@ -14,6 +14,7 @@ import Processing from "../Processing/Processing";
 import DoughnutChart from "./DoughnutChart/DoughnutChart";
 import PieChart from "./PieChart/PieChart";
 import DailyCount from "./LineGraphs/DailyCount/DailyCount";
+import CumulativeCount from "./LineGraphs/CumulativeCount/CumulativeCount";
 
 const Visualization = () => {
   // TODO: 100% responsible people (daily count) - Line Graph
@@ -30,6 +31,7 @@ const Visualization = () => {
   const [workPlanCount, setWorkPlanCount] = useState([]);
   const [vaccinationCount, setVaccinationCount] = useState([]);
   const [data, setData] = useState([]);
+
 
   // const reset = () => {
   //   setRecordCount(0);
@@ -82,6 +84,7 @@ const Visualization = () => {
             </div>
             <section>
               <DailyCount dbData={data}/>
+              <CumulativeCount dbData={data}/>
               {/*           
               <DailyCount />
               <Zoom>
