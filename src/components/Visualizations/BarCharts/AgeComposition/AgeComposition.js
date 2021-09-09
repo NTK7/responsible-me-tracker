@@ -35,27 +35,29 @@ const AgeComposition = ({ dbData }) => {
 
   const collectAgeGroupCount = async () => {
     await dbData.map((record) => {
-      switch (record.age) {
-        case "0-17":
-          less18++;
-          break;
-        case "19-29":
-          between18and29++;
-          break;
-        case "30-39":
-          between30and39++;
-          break;
-        case "40-49":
-          between40and49++;
-          break;
-        case "50-59":
-          between50and59++;
-          break;
-        case "60+":
-          more60++;
-          break;
-        default:
-          break;
+      if (record.percentage === 100) {
+        switch (record.age) {
+          case "0-17":
+            less18++;
+            break;
+          case "19-29":
+            between18and29++;
+            break;
+          case "30-39":
+            between30and39++;
+            break;
+          case "40-49":
+            between40and49++;
+            break;
+          case "50-59":
+            between50and59++;
+            break;
+          case "60+":
+            more60++;
+            break;
+          default:
+            break;
+        }
       }
     });
   };
@@ -66,7 +68,7 @@ const AgeComposition = ({ dbData }) => {
       {
         label: "Age Composition",
         data: data_,
-        backgroundColor: "rgba(204, 16, 52, 0.5)",
+        backgroundColor: "rgba(221, 0, 4, 0.8)",
         borderColor: "#CC1034",
         borderWidth: 2,
       },
@@ -74,11 +76,28 @@ const AgeComposition = ({ dbData }) => {
   };
 
   const options = {
+    legend: {
+      display: false,
+    },
     scales: {
+      xAxes: [
+        {
+          ticks: {
+            fontColor: "white",
+          },
+          gridLines: {
+            color: "rgb(221, 0, 4, 0.5)",
+          },
+        },
+      ],
       yAxes: [
         {
           ticks: {
             beginAtZero: true,
+            fontColor: "white",
+          },
+          gridLines: {
+            color: "rgb(221, 0, 4, 0.5)",
           },
         },
       ],
@@ -86,6 +105,7 @@ const AgeComposition = ({ dbData }) => {
   };
   return (
     <Container>
+      <p>Age Composition of 100% responsible citizen</p>
       <Bar data={data} options={options} />
     </Container>
   );
@@ -94,7 +114,7 @@ const AgeComposition = ({ dbData }) => {
 export default AgeComposition;
 
 const Container = styled.div`
-  margin: 3pc 0;
-  height: 50vh;
+  margin: 5pc 0;
+  color: white;
   width: 100%;
 `;

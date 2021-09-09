@@ -50,7 +50,7 @@ const DailyCount = ({ dbData }) => {
         label: "100% responsible citizen",
         data: graphData,
         fill: true,
-        backgroundColor: "rgba(204, 16, 52, 0.5)",
+        backgroundColor: "rgba(221, 0, 4, 0.8)",
         borderColor: "#CC1034",
       },
     ],
@@ -69,10 +69,11 @@ const DailyCount = ({ dbData }) => {
     scales: {
       xAxes: [
         {
-          type: "time",
-          time: {
-            format: "MM/DD/YY",
-            tooltipFormat: "ll",
+          ticks: {
+            fontColor: "white",
+          },
+          gridLines: {
+            color: "rgb(221, 0, 4, 0.5)",
           },
         },
       ],
@@ -80,6 +81,10 @@ const DailyCount = ({ dbData }) => {
         {
           ticks: {
             beginAtZero: true,
+            fontColor: "white",
+          },
+          gridLines: {
+            color: "rgb(221, 0, 4, 0.5)",
           },
         },
       ],
@@ -98,7 +103,8 @@ export default DailyCount;
 const Container = styled.div`
   /* scroll-snap-align: start; */
   /* border: 1px red solid; */
-  margin: 3pc 0;
+  margin: 5pc 0;
+  color: white;
   height: 50vh;
   width: 100%;
 `;

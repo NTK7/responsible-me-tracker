@@ -6,6 +6,7 @@ import Processing from "../Processing/Processing";
 import DailyCount from "./LineGraphs/DailyCount/DailyCount";
 import CumulativeCount from "./LineGraphs/CumulativeCount/CumulativeCount";
 import AgeComposition from "./BarCharts/AgeComposition/AgeComposition";
+import Districts from "./BarCharts/Districts/Districts";
 
 const Visualization = () => {
   // TODO: 100% responsible people (daily count) - Line Graph
@@ -43,6 +44,7 @@ const Visualization = () => {
               <DailyCount dbData={data} />
               <CumulativeCount dbData={data} />
               <AgeComposition dbData={data} />
+              <Districts dbData={data} />
             </section>
           </main>
         )}
@@ -56,6 +58,8 @@ export default Visualization;
 const Container = styled.div`
   padding: 2pc;
   /* scroll-snap-align: start; */
+  background-color: #212121;
+  color: white;
   > h1 {
     padding: 1pc;
     text-transform: uppercase;
@@ -65,7 +69,7 @@ const Container = styled.div`
     color: white;
     background-color: #de3538;
   }
-  > main {
+  /* > main {
     > div {
       padding: 2pc;
       > p,
@@ -86,7 +90,7 @@ const Container = styled.div`
       flex-wrap: wrap;
       height: 50vh;
     }
-  }
+  } */
   @media screen and (max-width: 1000px) {
     margin: 3pc 0pc;
     > h1 {

@@ -51,7 +51,7 @@ const CumulativeCount = ({ dbData }) => {
         label: "100% responsible citizen",
         data: graphData,
         fill: true,
-        backgroundColor: "rgb(132, 214, 122)",
+        backgroundColor: "rgb(62, 214, 37, 0.8)",
         borderColor: "#26cc10",
       },
     ],
@@ -70,17 +70,22 @@ const CumulativeCount = ({ dbData }) => {
     scales: {
       xAxes: [
         {
-          type: "time",
-          time: {
-            format: "MM/DD/YY",
-            tooltipFormat: "ll",
+          ticks: {
+            fontColor: "white",
+          },
+          gridLines: {
+            color: "rgb(62, 214, 37,0.2)",
           },
         },
       ],
       yAxes: [
         {
-         ticks: {
+          ticks: {
             beginAtZero: true,
+            fontColor: "white",
+          },
+          gridLines: {
+            color: "rgb(62, 214, 37,0.2)",
           },
         },
       ],
@@ -97,7 +102,8 @@ const CumulativeCount = ({ dbData }) => {
 export default CumulativeCount;
 
 const Container = styled.div`
-  margin: 3pc 0;
+  margin: 5pc 0;
+  color: white;
   height: 50vh;
   width: 100%;
 `;
