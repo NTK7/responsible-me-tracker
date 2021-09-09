@@ -5,40 +5,45 @@ import styled from "styled-components";
 const DailyCount = ({ dbData }) => {
   const [graphLabel, setGraphLabel] = useState([]);
   const [graphData, setGraphData] = useState([]);
+  const [dates, setDates] = useState([]);
 
   useEffect(() => {
-    dbData.length !== 0 && createGraphData();
+    dbData.length !== 0 && collectDates();
   }, []);
 
-  const createGraphData = async () => {
-    let tempLabel = [];
-    let tempData = [];
-    let startDate = dbData[0].timestamp.toDate().toLocaleDateString();
-    tempLabel.push(startDate);
-    let dataCoutner = 0;
-
-    await dbData.forEach((record, index) => {
-      let date_ = record.timestamp.toDate().toLocaleDateString();
-      if (date_ === startDate && index !== dbData.length - 1) {
-        dataCoutner++;
-      } else {
-        {
-          index !== dbData.length - 1 && tempLabel.push(date_);
-        }
-        tempData.push(dataCoutner);
-        dataCoutner = 2;
-        startDate = record.timestamp.toDate().toLocaleDateString();
-      }
+  const collectDates = async () => {
+    await dbData.forEach((record) => {
+      setDates((dates) => [
+        ...dates,
+        record.timestamp.toDate().toLocaleDateString(),
+      ]);
     });
-
-    setGraphLabel(tempLabel);
-    setGraphData(tempData);
   };
 
   useEffect(() => {
-    console.log(graphLabel);
-    console.log(graphData);
-  }, [graphData]);
+    if (dbData.length !== 0) {
+      console.log(dates);
+      const uniqueDates = dates.filter((v, i, a) => a.indexOf(v) === i);
+      getCountOfEachDate(uniqueDates);
+      console.log(uniqueDates);
+    }
+  }, [dates]);
+
+  const getCountOfEachDate = (uniqueDates) => {
+    uniqueDates.forEach((date) => {
+      let count = 0;
+      dbData.forEach((record) => {
+        if (
+          record.timestamp.toDate().toLocaleDateString() === date &&
+          record.percentage === 100
+        ) {
+          count++;
+        }
+      });
+      setGraphData((graphData) => [...graphData, count]);
+      setGraphLabel((graphLabel) => [...graphLabel, date]);
+    });
+  };
 
   const data = {
     labels: graphLabel,
