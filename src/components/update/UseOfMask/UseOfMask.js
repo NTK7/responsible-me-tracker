@@ -14,7 +14,7 @@ const UseOfMask = ({ useOfMask, setUseOfMask }) => {
   return (
     <Container backgroundImg={USE_OF_MASK}>
       <main>
-        <h1>WEARING MASK OUT SIDE HOME</h1>
+        <h1>WEARING MASK OUTSIDE HOME</h1>
 
         <FormControl
           color="secondary"

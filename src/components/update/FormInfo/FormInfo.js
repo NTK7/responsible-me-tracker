@@ -4,7 +4,7 @@ import BottomLogo from "../BottomLogo/BottomLogo";
 const FormInfo = () => {
   return (
     <Container>
-      <main>fill out the form below to get your score!</main>
+      <main>Fill out the form below to get your score!</main>
       <BottomLogo />
     </Container>
   );

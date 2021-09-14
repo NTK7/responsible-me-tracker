@@ -13,7 +13,7 @@ const PublicVisiting = ({ publicVisiting, setPublicVisiting }) => {
   return (
     <Container backgroundImg={PUBLIC_VISTING}>
       <main>
-        <h1>VISITING TO PUBLIC PLACES INLCUDING SHOPS</h1>
+        <h1>VISITS TO PUBLIC PLACES INLCUDING SHOPS</h1>
         <FormControl
           color="secondary"
           component="fieldset"
