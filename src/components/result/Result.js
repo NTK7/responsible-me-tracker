@@ -58,13 +58,13 @@ function Result({
             Responsible
           </h4>
         </div>
-        <p>Take following actions and be 100% #Responsible citizen</p>
+        <p>Take the following actions and be 100% responsible citizen</p>
 
         <section>
           {!bestResults ? (
             <div>
               <p style={{ textAlign: "center" }}>
-                Please make sure you follow the below instructions below.
+                Please make sure you follow the instructions below.
               </p>
               <ul>
                 {!age.includes("18") && (
@@ -107,7 +107,7 @@ function Result({
                 )}
                 {publicVisiting !== "avoided" && (
                   <>
-                    <li>Avoid public places for next 2 weeks</li>
+                    <li>Avoid public places for the next two weeks</li>
                     <div className="icon__image">
                       <img
                         src="/icons/public.png"
@@ -121,7 +121,7 @@ function Result({
                 {friendVisiting !== "avoided" && (
                   <>
                     <li>
-                      Do not visit your friends & relatives for next 2 weeks
+                      Do not visit your friends and relatives for the next two weeks
                     </li>
                     <div className="icon__image">
                       <img
@@ -135,7 +135,7 @@ function Result({
                 )}
                 {useOfMask !== "always" && (
                   <>
-                    <li>Always wear a mask outside home</li>
+                    <li>Always wear a mask outside the home</li>
                     <div className="icon__image">
                       <img
                         src="/icons/mask.png"
