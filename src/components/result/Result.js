@@ -58,7 +58,7 @@ function Result({
             Responsible
           </h4>
         </div>
-        <p>Take the following actions and be 100% responsible citizen</p>
+        <p>Take the following actions and be a 100% responsible citizen</p>
 
         <section>
           {!bestResults ? (
