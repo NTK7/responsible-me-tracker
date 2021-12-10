@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Processing from "../components/Processing/Processing";
-import Result from "../components/Result/Result";
+import Processing from "../components/processing/Processing";
+import Result from "../components/result/Result";
 import { db } from "../firebase";
 import { Fade } from "react-reveal";
 import { WEIGHTS } from "../utils/conversions";

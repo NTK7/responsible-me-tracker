@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Fade } from "react-reveal";
 import styled from "styled-components";
 import { db } from "../../firebase";
-import Processing from "../Processing/Processing";
+import Processing from "../processing/Processing";
 import DailyCount from "./LineGraphs/DailyCount/DailyCount";
 import CumulativeCount from "./LineGraphs/CumulativeCount/CumulativeCount";
 import AgeComposition from "./BarCharts/AgeComposition/AgeComposition";

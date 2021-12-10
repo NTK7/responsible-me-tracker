@@ -11,7 +11,6 @@ const App = () => {
         </Route>
         <Route path="/">
           <Home />
-          {/* <h1>The developer has taken the site down!</h1> */}
         </Route>
       </Switch>
     </Router>
